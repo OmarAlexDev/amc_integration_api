@@ -1,0 +1,17 @@
+### Create new workflow execution
+POST http://localhost:3000/api/executions
+Content-Type: application/json; charset=utf-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3Nfa2V5IjoiQUtJQVlGU1RCSlhTUVhRSUdWSEciLCJzZWNyZXRfa2V5IjoickYyQjdJYmEzZEtRR1hRTnovT1RWdGpTcFJYSUpwWnBEaDQ5aGVyQSIsImlhdCI6MTcyMDQ0NTc4Mn0.np8KaPeA2wxTTblQVr7ewKip5S5Yf065fzgwQHGfJrw
+
+{
+    "workflowId":"test",
+    "timeWindowStart": "2023-05-20T00:00:00",
+    "timeWindowEnd": "2023-08-03T00:00:00",
+    "timeWindowType": "EXPLICIT",
+    "ignoreDataGaps": true
+}
+
+### Get workflow execution
+GET http://localhost:3000/api/executions/017735f9-25bf-450b-9849-29eef154e6bc
+Content-Type: application/json; charset=utf-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3Nfa2V5IjoiQUtJQVlGU1RCSlhTUVhRSUdWSEciLCJzZWNyZXRfa2V5IjoickYyQjdJYmEzZEtRR1hRTnovT1RWdGpTcFJYSUpwWnBEaDQ5aGVyQSIsImlhdCI6MTcyMDQ0NTc4Mn0.np8KaPeA2wxTTblQVr7ewKip5S5Yf065fzgwQHGfJrw

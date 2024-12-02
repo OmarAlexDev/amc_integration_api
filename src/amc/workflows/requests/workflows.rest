@@ -1,0 +1,34 @@
+### Get all workflows
+GET http://localhost:3000/api/workflows
+Content-Type: application/json; charset=utf-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3Nfa2V5IjoiQUtJQVlGU1RCSlhTUVhRSUdWSEciLCJzZWNyZXRfa2V5IjoickYyQjdJYmEzZEtRR1hRTnovT1RWdGpTcFJYSUpwWnBEaDQ5aGVyQSIsImlhdCI6MTcyMDQ0NTc4Mn0.np8KaPeA2wxTTblQVr7ewKip5S5Yf065fzgwQHGfJrw
+
+### Get workflow
+GET http://localhost:3000/api/workflows/test
+Content-Type: application/json; charset=utf-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3Nfa2V5IjoiQUtJQVlGU1RCSlhTUVhRSUdWSEciLCJzZWNyZXRfa2V5IjoickYyQjdJYmEzZEtRR1hRTnovT1RWdGpTcFJYSUpwWnBEaDQ5aGVyQSIsImlhdCI6MTcyMDQ0NTc4Mn0.np8KaPeA2wxTTblQVr7ewKip5S5Yf065fzgwQHGfJrw
+
+### Create new workflow
+POST http://localhost:3000/api/workflows
+Content-Type: application/json; charset=utf-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3Nfa2V5IjoiQUtJQVlGU1RCSlhTUVhRSUdWSEciLCJzZWNyZXRfa2V5IjoickYyQjdJYmEzZEtRR1hRTnovT1RWdGpTcFJYSUpwWnBEaDQ5aGVyQSIsImlhdCI6MTcyMDQ0NTc4Mn0.np8KaPeA2wxTTblQVr7ewKip5S5Yf065fzgwQHGfJrw
+
+{
+    "sqlQuery": "SELECT campaign, SUM(total_purchases) AS total_orders_9d FROM amazon_attributed_events_by_traffic_time WHERE SECONDS_BETWEEN(traffic_event_dt_utc, conversion_event_dt_utc) <= 60 GROUP BY campaign;",
+    "workflowId": "test"
+}
+
+### Update workflow
+PUT http://localhost:3000/api/workflows/test
+Content-Type: application/json; charset=utf-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3Nfa2V5IjoiQUtJQVlGU1RCSlhTUVhRSUdWSEciLCJzZWNyZXRfa2V5IjoickYyQjdJYmEzZEtRR1hRTnovT1RWdGpTcFJYSUpwWnBEaDQ5aGVyQSIsImlhdCI6MTcyMDQ0NTc4Mn0.np8KaPeA2wxTTblQVr7ewKip5S5Yf065fzgwQHGfJrw
+
+{
+    "sqlQuery": "SELECT campaign, SUM(total_purchases) AS total_orders_9d FROM amazon_attributed_events_by_traffic_time WHERE SECONDS_BETWEEN(traffic_event_dt_utc, conversion_event_dt_utc) <= 30 GROUP BY campaign;",
+    "workflowId": "test"
+}
+
+### Delete workflow
+DELETE http://localhost:3000/api/workflows/test
+Content-Type: application/json; charset=utf-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3Nfa2V5IjoiQUtJQVlGU1RCSlhTUVhRSUdWSEciLCJzZWNyZXRfa2V5IjoickYyQjdJYmEzZEtRR1hRTnovT1RWdGpTcFJYSUpwWnBEaDQ5aGVyQSIsImlhdCI6MTcyMDQ0NTc4Mn0.np8KaPeA2wxTTblQVr7ewKip5S5Yf065fzgwQHGfJrw

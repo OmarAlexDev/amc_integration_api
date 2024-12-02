@@ -1,0 +1,2334 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>amc.integration-api documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">amc.integration-api documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Variables</li>
+</ol>
+
+<section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#LTV_Sem_1" title="src/amc/automated/queries/LifetimeValue_Sem_1.ts" ><b>LTV_Sem_1</b>&nbsp;&nbsp;&nbsp;(src/.../LifetimeValue_Sem_1.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#LTV_Sem_2" title="src/amc/automated/queries/LifetimeValue_Sem_2.ts" ><b>LTV_Sem_2</b>&nbsp;&nbsp;&nbsp;(src/.../LifetimeValue_Sem_2.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/amc/automated/queries/LifetimeValue_Sem_1.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LTV_Sem_1"></a>
+                    <span class="name">
+                        <span ><b>LTV_Sem_1</b></span>
+                        <a href="#LTV_Sem_1"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(dates_map: Map&lt;string, IYearMapItem&gt;) &#x3D;&gt; {
+  return &#x60;WITH ntb_data AS (
+        SELECT
+        advertiser,
+        campaign,
+        COUNT(DISTINCT user_id) AS total_ntb_users,
+        COUNT(DISTINCT conversion_event_dt) AS total_ntb_conversions,
+        SUM(month_1) AS month_1_ntb_conv,
+        SUM(month_1_ntb_sales) AS month_1_ntb_sales,
+        SUM(month_2) AS month_2_ntb_conv,
+        SUM(month_2_ntb_sales) AS month_2_ntb_sales,
+        SUM(month_3) AS month_3_ntb_conv,
+        SUM(month_3_ntb_sales) AS month_3_ntb_sales,
+        SUM(month_4) AS month_4_ntb_conv,
+        SUM(month_4_ntb_sales) AS month_4_ntb_sales,
+        SUM(month_5) AS month_5_ntb_conv,
+        SUM(month_5_ntb_sales) AS month_5_ntb_sales,
+        SUM(month_6) AS month_6_ntb_conv,
+        SUM(month_6_ntb_sales) AS month_6_ntb_sales,
+        SUM(month_7) AS month_7_ntb_conv,
+        SUM(month_7_ntb_sales) AS month_7_ntb_sales,
+        SUM(month_8) AS month_8_ntb_conv,
+        SUM(month_8_ntb_sales) AS month_8_ntb_sales,
+        SUM(month_9) AS month_9_ntb_conv,
+        SUM(month_9_ntb_sales) AS month_9_ntb_sales,
+        SUM(month_10) AS month_10_ntb_conv,
+        SUM(month_10_ntb_sales) AS month_10_ntb_sales,
+        SUM(month_11) AS month_11_ntb_conv,
+        SUM(month_11_ntb_sales) AS month_11_ntb_sales,
+        SUM(month_12) AS month_12_ntb_conv,
+        SUM(month_12_ntb_sales) AS month_12_ntb_sales
+        FROM (
+        SELECT
+        advertiser,
+        campaign,
+        MAX(conversion_event_dt) AS conversion_event_dt,
+        new_to_brand_total_product_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_1&#x27;).date}-01&#x27;, 1, 0) AS month_1,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_1&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_1_ntb_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;, 1, 0) AS month_2,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_2_ntb_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_3&#x27;).date}-01&#x27;, 1, 0) AS month_3,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_3&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_3_ntb_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_4&#x27;).date}-01&#x27;, 1, 0) AS month_4,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_4&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_4_ntb_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_5&#x27;).date}-01&#x27;, 1, 0) AS month_5,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_5&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_5_ntb_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_6&#x27;).date}-01&#x27;, 1, 0) AS month_6,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_6&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_6_ntb_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_7&#x27;).date}-01&#x27;, 1, 0) AS month_7,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_7&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_7_ntb_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_8&#x27;).date}-01&#x27;, 1, 0) AS month_8,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_8&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_8_ntb_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_9&#x27;).date}-01&#x27;, 1, 0) AS month_9,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_9&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_9_ntb_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_10&#x27;).date}-01&#x27;, 1, 0) AS month_10,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_10&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_10_ntb_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_11&#x27;).date}-01&#x27;, 1, 0) AS month_11,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_11&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_11_ntb_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_12&#x27;).date}-01&#x27;, 1, 0) AS month_12,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_12&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_12_ntb_sales,
+        user_id
+        FROM
+        amazon_attributed_events_by_conversion_time
+        WHERE
+        purchases &gt; 0
+        AND new_to_brand &#x3D; TRUE
+        GROUP BY
+        advertiser,
+        campaign,
+        user_id,
+        new_to_brand_total_product_sales
+        )
+        GROUP BY
+        advertiser,
+        campaign
+        ),
+        ntb_users AS (
+        SELECT
+        campaign,
+        user_id,
+        MAX(conversion_event_dt) AS conversion_event_dt
+        FROM
+        amazon_attributed_events_by_conversion_time
+        WHERE
+        purchases &gt; 0
+        AND new_to_brand &#x3D; TRUE
+        GROUP BY
+        campaign,
+        user_id
+        ),
+        non_ntb_rest_months AS(
+        SELECT 
+        campaign,
+        MAX(conversion_event_dt) AS conversion_event_dt,
+        total_product_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;,1,0) AS month_2,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;,total_product_sales,0) AS month_2_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_3&#x27;).date}-01&#x27;,1,0) AS month_3,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_3&#x27;).date}-01&#x27;,total_product_sales,0) AS month_3_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_4&#x27;).date}-01&#x27;,1,0) AS month_4,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_4&#x27;).date}-01&#x27;,total_product_sales,0) AS month_4_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_5&#x27;).date}-01&#x27;,1,0) AS month_5,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_5&#x27;).date}-01&#x27;,total_product_sales,0) AS month_5_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_6&#x27;).date}-01&#x27;,1,0) AS month_6,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_6&#x27;).date}-01&#x27;,total_product_sales,0) AS month_6_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_7&#x27;).date}-01&#x27;,1,0) AS month_7,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_7&#x27;).date}-01&#x27;,total_product_sales,0) AS month_7_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_8&#x27;).date}-01&#x27;,1,0) AS month_8,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_8&#x27;).date}-01&#x27;,total_product_sales,0) AS month_8_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_9&#x27;).date}-01&#x27;,1,0) AS month_9,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_9&#x27;).date}-01&#x27;,total_product_sales,0) AS month_9_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_10&#x27;).date}-01&#x27;,1,0) AS month_10,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_10&#x27;).date}-01&#x27;,total_product_sales,0) AS month_10_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_11&#x27;).date}-01&#x27;,1,0) AS month_11,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_11&#x27;).date}-01&#x27;,total_product_sales,0) AS month_11_sales,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_12&#x27;).date}-01&#x27;,1,0) AS month_12,
+        IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_12&#x27;).date}-01&#x27;,total_product_sales,0) AS month_12_sales,
+        user_id
+        FROM 
+        amazon_attributed_events_by_conversion_time
+        WHERE
+        purchases &gt; 0
+        AND new_to_brand &#x3D; FALSE
+        GROUP BY
+        campaign,
+        user_id,
+        total_product_sales
+        ),
+        month_1_recurr AS (
+        SELECT 
+        ntb.campaign,
+        SUM(month_2) AS month_1_users_recurr_month_2,
+        SUM(month_2_sales) AS month_1_recurr_month_2_sales,
+        SUM(month_3) AS month_1_users_recurr_month_3,
+        SUM(month_3_sales) AS month_1_recurr_month_3_sales,
+        SUM(month_4) AS month_1_users_recurr_month_4,
+        SUM(month_4_sales) AS month_1_recurr_month_4_sales,
+        SUM(month_5) AS month_1_users_recurr_month_5,
+        SUM(month_5_sales) AS month_1_recurr_month_5_sales,
+        SUM(month_6) AS month_1_users_recurr_month_6,
+        SUM(month_6_sales) AS month_1_recurr_month_6_sales,
+        SUM(month_7) AS month_1_users_recurr_month_7,
+        SUM(month_7_sales) AS month_1_recurr_month_7_sales,
+        SUM(month_8) AS month_1_users_recurr_month_8,
+        SUM(month_8_sales) AS month_1_recurr_month_8_sales,
+        SUM(month_9) AS month_1_users_recurr_month_9,
+        SUM(month_9_sales) AS month_1_recurr_month_9_sales,
+        SUM(month_10) AS month_1_users_recurr_month_10,
+        SUM(month_10_sales) AS month_1_recurr_month_10_sales,
+        SUM(month_11) AS month_1_users_recurr_month_11,
+        SUM(month_11_sales) AS month_1_recurr_month_11_sales,
+        SUM(month_12) AS month_1_users_recurr_month_12,
+        SUM(month_12_sales) AS month_1_recurr_month_12_sales,
+        COUNT(DISTINCT(ntb.user_id)) month_1_total_return_users
+        FROM ntb_users ntb
+        JOIN non_ntb_rest_months non
+        ON ntb.user_id &#x3D; non.user_id
+        AND DATE_TRUNC(&#x27;month&#x27;, ntb.conversion_event_dt) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_1&#x27;).date}-01&#x27;
+        AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_1&#x27;).date}-01&#x27;
+        GROUP BY
+        campaign
+        HAVING COUNT(DISTINCT(non.user_id))&gt;1
+        ),
+        month_1_data AS (
+        SELECT 
+        ntb.advertiser,
+        ntb.campaign,
+        ntb.total_ntb_users,
+        ntb.total_ntb_conversions,
+        ntb.month_1_ntb_conv,
+        ntb.month_1_ntb_sales,
+        recur.month_1_users_recurr_month_2,
+        recur.month_1_recurr_month_2_sales,
+        recur.month_1_users_recurr_month_3,
+        recur.month_1_recurr_month_3_sales,
+        recur.month_1_users_recurr_month_4,
+        recur.month_1_recurr_month_4_sales,
+        recur.month_1_users_recurr_month_5,
+        recur.month_1_recurr_month_5_sales,
+        recur.month_1_users_recurr_month_6,
+        recur.month_1_recurr_month_6_sales,
+        recur.month_1_users_recurr_month_7,
+        recur.month_1_recurr_month_7_sales,
+        recur.month_1_users_recurr_month_8,
+        recur.month_1_recurr_month_8_sales,
+        recur.month_1_users_recurr_month_9,
+        recur.month_1_recurr_month_9_sales,
+        recur.month_1_users_recurr_month_10,
+        recur.month_1_recurr_month_10_sales,
+        recur.month_1_users_recurr_month_11,
+        recur.month_1_recurr_month_11_sales,
+        recur.month_1_users_recurr_month_12,
+        recur.month_1_recurr_month_12_sales,
+        recur.month_1_total_return_users,
+        ntb.month_2_ntb_conv,
+        ntb.month_2_ntb_sales,
+        ntb.month_3_ntb_conv,
+        ntb.month_3_ntb_sales,
+        ntb.month_4_ntb_conv,
+        ntb.month_4_ntb_sales,
+        ntb.month_5_ntb_conv,
+        ntb.month_5_ntb_sales
+        FROM
+        ntb_data ntb 
+        LEFT JOIN
+        month_1_recurr recur
+        ON ntb.campaign &#x3D; recur.campaign
+        GROUP BY
+        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37
+        ),
+        month_2_recurr AS (
+        SELECT 
+        ntb.campaign,
+        SUM(month_3) AS month_2_users_recurr_month_3,
+        SUM(month_3_sales) AS month_2_recurr_month_3_sales,
+        SUM(month_4) AS month_2_users_recurr_month_4,
+        SUM(month_4_sales) AS month_2_recurr_month_4_sales,
+        SUM(month_5) AS month_2_users_recurr_month_5,
+        SUM(month_5_sales) AS month_2_recurr_month_5_sales,
+        SUM(month_6) AS month_2_users_recurr_month_6,
+        SUM(month_6_sales) AS month_2_recurr_month_6_sales,
+        SUM(month_7) AS month_2_users_recurr_month_7,
+        SUM(month_7_sales) AS month_2_recurr_month_7_sales,
+        SUM(month_8) AS month_2_users_recurr_month_8,
+        SUM(month_8_sales) AS month_2_recurr_month_8_sales,
+        SUM(month_9) AS month_2_users_recurr_month_9,
+        SUM(month_9_sales) AS month_2_recurr_month_9_sales,
+        SUM(month_10) AS month_2_users_recurr_month_10,
+        SUM(month_10_sales) AS month_2_recurr_month_10_sales,
+        SUM(month_11) AS month_2_users_recurr_month_11,
+        SUM(month_11_sales) AS month_2_recurr_month_11_sales,
+        SUM(month_12) AS month_2_users_recurr_month_12,
+        SUM(month_12_sales) AS month_2_recurr_month_12_sales,
+        COUNT(DISTINCT(ntb.user_id)) month_2_total_return_users
+        FROM ntb_users ntb
+        JOIN non_ntb_rest_months non
+        ON ntb.user_id &#x3D; non.user_id
+        AND DATE_TRUNC(&#x27;month&#x27;, ntb.conversion_event_dt) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;
+        AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_1&#x27;).date}-01&#x27;
+        AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;
+        GROUP BY
+        campaign
+        HAVING COUNT(DISTINCT(non.user_id))&gt;1
+        ),
+        month_2_data AS (
+        SELECT 
+        prev_data.advertiser,
+        prev_data.campaign,
+        prev_data.total_ntb_users,
+        prev_data.total_ntb_conversions,
+        prev_data.month_1_ntb_conv,
+        prev_data.month_1_ntb_sales,
+        prev_data.month_1_users_recurr_month_2,
+        prev_data.month_1_recurr_month_2_sales,
+        prev_data.month_1_users_recurr_month_3,
+        prev_data.month_1_recurr_month_3_sales,
+        prev_data.month_1_users_recurr_month_4,
+        prev_data.month_1_recurr_month_4_sales,
+        prev_data.month_1_users_recurr_month_5,
+        prev_data.month_1_recurr_month_5_sales,
+        prev_data.month_1_users_recurr_month_6,
+        prev_data.month_1_recurr_month_6_sales,
+        prev_data.month_1_users_recurr_month_7,
+        prev_data.month_1_recurr_month_7_sales,
+        prev_data.month_1_users_recurr_month_8,
+        prev_data.month_1_recurr_month_8_sales,
+        prev_data.month_1_users_recurr_month_9,
+        prev_data.month_1_recurr_month_9_sales,
+        prev_data.month_1_users_recurr_month_10,
+        prev_data.month_1_recurr_month_10_sales,
+        prev_data.month_1_users_recurr_month_11,
+        prev_data.month_1_recurr_month_11_sales,
+        prev_data.month_1_users_recurr_month_12,
+        prev_data.month_1_recurr_month_12_sales,
+        prev_data.month_1_total_return_users,
+        prev_data.month_2_ntb_conv,
+        prev_data.month_2_ntb_sales,
+        recur.month_2_users_recurr_month_3,
+        recur.month_2_recurr_month_3_sales,
+        recur.month_2_users_recurr_month_4,
+        recur.month_2_recurr_month_4_sales,
+        recur.month_2_users_recurr_month_5,
+        recur.month_2_recurr_month_5_sales,
+        recur.month_2_users_recurr_month_6,
+        recur.month_2_recurr_month_6_sales,
+        recur.month_2_users_recurr_month_7,
+        recur.month_2_recurr_month_7_sales,
+        recur.month_2_users_recurr_month_8,
+        recur.month_2_recurr_month_8_sales,
+        recur.month_2_users_recurr_month_9,
+        recur.month_2_recurr_month_9_sales,
+        recur.month_2_users_recurr_month_10,
+        recur.month_2_recurr_month_10_sales,
+        recur.month_2_users_recurr_month_11,
+        recur.month_2_recurr_month_11_sales,
+        recur.month_2_users_recurr_month_12,
+        recur.month_2_recurr_month_12_sales,
+        recur.month_2_total_return_users,
+        prev_data.month_3_ntb_conv,
+        prev_data.month_3_ntb_sales,
+        prev_data.month_4_ntb_conv,
+        prev_data.month_4_ntb_sales,
+        prev_data.month_5_ntb_conv,
+        prev_data.month_5_ntb_sales
+        FROM
+        month_1_data prev_data
+        LEFT JOIN
+        month_2_recurr recur
+        ON prev_data.campaign &#x3D; recur.campaign
+        GROUP BY
+        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58
+        ),
+        month_3_recurr AS (
+        SELECT 
+        ntb.campaign,
+        SUM(month_4) AS month_3_users_recurr_month_4,
+        SUM(month_4_sales) AS month_3_recurr_month_4_sales,
+        SUM(month_5) AS month_3_users_recurr_month_5,
+        SUM(month_5_sales) AS month_3_recurr_month_5_sales,
+        SUM(month_6) AS month_3_users_recurr_month_6,
+        SUM(month_6_sales) AS month_3_recurr_month_6_sales,
+        SUM(month_7) AS month_3_users_recurr_month_7,
+        SUM(month_7_sales) AS month_3_recurr_month_7_sales,
+        SUM(month_8) AS month_3_users_recurr_month_8,
+        SUM(month_8_sales) AS month_3_recurr_month_8_sales,
+        SUM(month_9) AS month_3_users_recurr_month_9,
+        SUM(month_9_sales) AS month_3_recurr_month_9_sales,
+        SUM(month_10) AS month_3_users_recurr_month_10,
+        SUM(month_10_sales) AS month_3_recurr_month_10_sales,
+        SUM(month_11) AS month_3_users_recurr_month_11,
+        SUM(month_11_sales) AS month_3_recurr_month_11_sales,
+        SUM(month_12) AS month_3_users_recurr_month_12,
+        SUM(month_12_sales) AS month_3_recurr_month_12_sales,
+        COUNT(DISTINCT(ntb.user_id)) month_3_total_return_users
+        FROM ntb_users ntb
+        JOIN non_ntb_rest_months non
+        ON ntb.user_id &#x3D; non.user_id
+        AND DATE_TRUNC(&#x27;month&#x27;, ntb.conversion_event_dt) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_3&#x27;).date}-01&#x27;
+        AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_1&#x27;).date}-01&#x27;
+        AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;
+        AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_3&#x27;).date}-01&#x27;
+        GROUP BY
+        campaign
+        HAVING COUNT(DISTINCT(non.user_id))&gt;1
+        ),
+        month_3_data AS (
+        SELECT 
+        prev_data.advertiser,
+        prev_data.campaign,
+        prev_data.total_ntb_users,
+        prev_data.total_ntb_conversions,
+        prev_data.month_1_ntb_conv,
+        prev_data.month_1_ntb_sales,
+        prev_data.month_1_users_recurr_month_2,
+        prev_data.month_1_recurr_month_2_sales,
+        prev_data.month_1_users_recurr_month_3,
+        prev_data.month_1_recurr_month_3_sales,
+        prev_data.month_1_users_recurr_month_4,
+        prev_data.month_1_recurr_month_4_sales,
+        prev_data.month_1_users_recurr_month_5,
+        prev_data.month_1_recurr_month_5_sales,
+        prev_data.month_1_users_recurr_month_6,
+        prev_data.month_1_recurr_month_6_sales,
+        prev_data.month_1_users_recurr_month_7,
+        prev_data.month_1_recurr_month_7_sales,
+        prev_data.month_1_users_recurr_month_8,
+        prev_data.month_1_recurr_month_8_sales,
+        prev_data.month_1_users_recurr_month_9,
+        prev_data.month_1_recurr_month_9_sales,
+        prev_data.month_1_users_recurr_month_10,
+        prev_data.month_1_recurr_month_10_sales,
+        prev_data.month_1_users_recurr_month_11,
+        prev_data.month_1_recurr_month_11_sales,
+        prev_data.month_1_users_recurr_month_12,
+        prev_data.month_1_recurr_month_12_sales,
+        prev_data.month_1_total_return_users,
+        prev_data.month_2_ntb_conv,
+        prev_data.month_2_ntb_sales,
+        prev_data.month_2_users_recurr_month_3,
+        prev_data.month_2_recurr_month_3_sales,
+        prev_data.month_2_users_recurr_month_4,
+        prev_data.month_2_recurr_month_4_sales,
+        prev_data.month_2_users_recurr_month_5,
+        prev_data.month_2_recurr_month_5_sales,
+        prev_data.month_2_users_recurr_month_6,
+        prev_data.month_2_recurr_month_6_sales,
+        prev_data.month_2_users_recurr_month_7,
+        prev_data.month_2_recurr_month_7_sales,
+        prev_data.month_2_users_recurr_month_8,
+        prev_data.month_2_recurr_month_8_sales,
+        prev_data.month_2_users_recurr_month_9,
+        prev_data.month_2_recurr_month_9_sales,
+        prev_data.month_2_users_recurr_month_10,
+        prev_data.month_2_recurr_month_10_sales,
+        prev_data.month_2_users_recurr_month_11,
+        prev_data.month_2_recurr_month_11_sales,
+        prev_data.month_2_users_recurr_month_12,
+        prev_data.month_2_recurr_month_12_sales,
+        prev_data.month_2_total_return_users,
+        prev_data.month_3_ntb_conv,
+        prev_data.month_3_ntb_sales,
+        recur.month_3_users_recurr_month_4,
+        recur.month_3_recurr_month_4_sales,
+        recur.month_3_users_recurr_month_5,
+        recur.month_3_recurr_month_5_sales,
+        recur.month_3_users_recurr_month_6,
+        recur.month_3_recurr_month_6_sales,
+        recur.month_3_users_recurr_month_7,
+        recur.month_3_recurr_month_7_sales,
+        recur.month_3_users_recurr_month_8,
+        recur.month_3_recurr_month_8_sales,
+        recur.month_3_users_recurr_month_9,
+        recur.month_3_recurr_month_9_sales,
+        recur.month_3_users_recurr_month_10,
+        recur.month_3_recurr_month_10_sales,
+        recur.month_3_users_recurr_month_11,
+        recur.month_3_recurr_month_11_sales,
+        recur.month_3_users_recurr_month_12,
+        recur.month_3_recurr_month_12_sales,
+        recur.month_3_total_return_users,
+        prev_data.month_4_ntb_conv,
+        prev_data.month_4_ntb_sales,
+        prev_data.month_5_ntb_conv,
+        prev_data.month_5_ntb_sales
+        FROM
+        month_2_data prev_data
+        LEFT JOIN
+        month_3_recurr recur
+        ON prev_data.campaign &#x3D; recur.campaign
+        GROUP BY
+        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77
+        ),
+        month_4_recurr AS (
+        SELECT 
+        ntb.campaign,
+        SUM(month_5) AS month_4_users_recurr_month_5,
+        SUM(month_5_sales) AS month_4_recurr_month_5_sales,
+        SUM(month_6) AS month_4_users_recurr_month_6,
+        SUM(month_6_sales) AS month_4_recurr_month_6_sales,
+        SUM(month_7) AS month_4_users_recurr_month_7,
+        SUM(month_7_sales) AS month_4_recurr_month_7_sales,
+        SUM(month_8) AS month_4_users_recurr_month_8,
+        SUM(month_8_sales) AS month_4_recurr_month_8_sales,
+        SUM(month_9) AS month_4_users_recurr_month_9,
+        SUM(month_9_sales) AS month_4_recurr_month_9_sales,
+        SUM(month_10) AS month_4_users_recurr_month_10,
+        SUM(month_10_sales) AS month_4_recurr_month_10_sales,
+        SUM(month_11) AS month_4_users_recurr_month_11,
+        SUM(month_11_sales) AS month_4_recurr_month_11_sales,
+        SUM(month_12) AS month_4_users_recurr_month_12,
+        SUM(month_12_sales) AS month_4_recurr_month_12_sales,
+        COUNT(DISTINCT(ntb.user_id)) month_4_total_return_users
+        FROM ntb_users ntb
+        JOIN non_ntb_rest_months non
+        ON ntb.user_id &#x3D; non.user_id
+        AND DATE_TRUNC(&#x27;month&#x27;, ntb.conversion_event_dt) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_4&#x27;).date}-01&#x27;
+        AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_1&#x27;).date}-01&#x27;
+        AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;
+        AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_3&#x27;).date}-01&#x27;
+        AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_4&#x27;).date}-01&#x27;
+        GROUP BY
+        campaign
+        HAVING COUNT(DISTINCT(non.user_id))&gt;1
+        ),
+        month_4_data AS (
+        SELECT 
+        prev_data.advertiser,
+        prev_data.campaign,
+        prev_data.total_ntb_users,
+        prev_data.total_ntb_conversions,
+        prev_data.month_1_ntb_conv,
+        prev_data.month_1_ntb_sales,
+        prev_data.month_1_users_recurr_month_2,
+        prev_data.month_1_recurr_month_2_sales,
+        prev_data.month_1_users_recurr_month_3,
+        prev_data.month_1_recurr_month_3_sales,
+        prev_data.month_1_users_recurr_month_4,
+        prev_data.month_1_recurr_month_4_sales,
+        prev_data.month_1_users_recurr_month_5,
+        prev_data.month_1_recurr_month_5_sales,
+        prev_data.month_1_users_recurr_month_6,
+        prev_data.month_1_recurr_month_6_sales,
+        prev_data.month_1_users_recurr_month_7,
+        prev_data.month_1_recurr_month_7_sales,
+        prev_data.month_1_users_recurr_month_8,
+        prev_data.month_1_recurr_month_8_sales,
+        prev_data.month_1_users_recurr_month_9,
+        prev_data.month_1_recurr_month_9_sales,
+        prev_data.month_1_users_recurr_month_10,
+        prev_data.month_1_recurr_month_10_sales,
+        prev_data.month_1_users_recurr_month_11,
+        prev_data.month_1_recurr_month_11_sales,
+        prev_data.month_1_users_recurr_month_12,
+        prev_data.month_1_recurr_month_12_sales,
+        prev_data.month_1_total_return_users,
+        prev_data.month_2_ntb_conv,
+        prev_data.month_2_ntb_sales,
+        prev_data.month_2_users_recurr_month_3,
+        prev_data.month_2_recurr_month_3_sales,
+        prev_data.month_2_users_recurr_month_4,
+        prev_data.month_2_recurr_month_4_sales,
+        prev_data.month_2_users_recurr_month_5,
+        prev_data.month_2_recurr_month_5_sales,
+        prev_data.month_2_users_recurr_month_6,
+        prev_data.month_2_recurr_month_6_sales,
+        prev_data.month_2_users_recurr_month_7,
+        prev_data.month_2_recurr_month_7_sales,
+        prev_data.month_2_users_recurr_month_8,
+        prev_data.month_2_recurr_month_8_sales,
+        prev_data.month_2_users_recurr_month_9,
+        prev_data.month_2_recurr_month_9_sales,
+        prev_data.month_2_users_recurr_month_10,
+        prev_data.month_2_recurr_month_10_sales,
+        prev_data.month_2_users_recurr_month_11,
+        prev_data.month_2_recurr_month_11_sales,
+        prev_data.month_2_users_recurr_month_12,
+        prev_data.month_2_recurr_month_12_sales,
+        prev_data.month_2_total_return_users,
+        prev_data.month_3_ntb_conv,
+        prev_data.month_3_ntb_sales,
+        prev_data.month_3_users_recurr_month_4,
+        prev_data.month_3_recurr_month_4_sales,
+        prev_data.month_3_users_recurr_month_5,
+        prev_data.month_3_recurr_month_5_sales,
+        prev_data.month_3_users_recurr_month_6,
+        prev_data.month_3_recurr_month_6_sales,
+        prev_data.month_3_users_recurr_month_7,
+        prev_data.month_3_recurr_month_7_sales,
+        prev_data.month_3_users_recurr_month_8,
+        prev_data.month_3_recurr_month_8_sales,
+        prev_data.month_3_users_recurr_month_9,
+        prev_data.month_3_recurr_month_9_sales,
+        prev_data.month_3_users_recurr_month_10,
+        prev_data.month_3_recurr_month_10_sales,
+        prev_data.month_3_users_recurr_month_11,
+        prev_data.month_3_recurr_month_11_sales,
+        prev_data.month_3_users_recurr_month_12,
+        prev_data.month_3_recurr_month_12_sales,
+        prev_data.month_3_total_return_users,
+        prev_data.month_4_ntb_conv,
+        prev_data.month_4_ntb_sales,
+        recur.month_4_users_recurr_month_5,
+        recur.month_4_recurr_month_5_sales,
+        recur.month_4_users_recurr_month_6,
+        recur.month_4_recurr_month_6_sales,
+        recur.month_4_users_recurr_month_7,
+        recur.month_4_recurr_month_7_sales,
+        recur.month_4_users_recurr_month_8,
+        recur.month_4_recurr_month_8_sales,
+        recur.month_4_users_recurr_month_9,
+        recur.month_4_recurr_month_9_sales,
+        recur.month_4_users_recurr_month_10,
+        recur.month_4_recurr_month_10_sales,
+        recur.month_4_users_recurr_month_11,
+        recur.month_4_recurr_month_11_sales,
+        recur.month_4_users_recurr_month_12,
+        recur.month_4_recurr_month_12_sales,
+        recur.month_4_total_return_users,
+        prev_data.month_5_ntb_conv,
+        prev_data.month_5_ntb_sales
+        FROM
+        month_3_data prev_data
+        LEFT JOIN
+        month_4_recurr recur
+        ON prev_data.campaign &#x3D; recur.campaign
+        GROUP BY
+        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94
+        ),
+        month_5_recurr AS (
+        SELECT 
+        ntb.campaign,
+        SUM(month_6) AS month_5_users_recurr_month_6,
+        SUM(month_6_sales) AS month_5_recurr_month_6_sales,
+        SUM(month_7) AS month_5_users_recurr_month_7,
+        SUM(month_7_sales) AS month_5_recurr_month_7_sales,
+        SUM(month_8) AS month_5_users_recurr_month_8,
+        SUM(month_8_sales) AS month_5_recurr_month_8_sales,
+        SUM(month_9) AS month_5_users_recurr_month_9,
+        SUM(month_9_sales) AS month_5_recurr_month_9_sales,
+        SUM(month_10) AS month_5_users_recurr_month_10,
+        SUM(month_10_sales) AS month_5_recurr_month_10_sales,
+        SUM(month_11) AS month_5_users_recurr_month_11,
+        SUM(month_11_sales) AS month_5_recurr_month_11_sales,
+        SUM(month_12) AS month_5_users_recurr_month_12,
+        SUM(month_12_sales) AS month_5_recurr_month_12_sales,
+        COUNT(DISTINCT(ntb.user_id)) month_5_total_return_users
+        FROM ntb_users ntb
+        JOIN non_ntb_rest_months non
+        ON ntb.user_id &#x3D; non.user_id
+        AND DATE_TRUNC(&#x27;month&#x27;, ntb.conversion_event_dt) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_5&#x27;).date}-01&#x27;
+        AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_1&#x27;).date}-01&#x27;
+        AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;
+        AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_3&#x27;).date}-01&#x27;
+        AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_4&#x27;).date}-01&#x27;
+        AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_5&#x27;).date}-01&#x27;
+        GROUP BY
+        campaign
+        HAVING COUNT(DISTINCT(non.user_id))&gt;1
+        ),
+        month_5_data AS (
+        SELECT 
+        prev_data.advertiser,
+        prev_data.campaign,
+        prev_data.total_ntb_users,
+        prev_data.total_ntb_conversions,
+        prev_data.month_1_ntb_conv,
+        prev_data.month_1_ntb_sales,
+        prev_data.month_1_users_recurr_month_2,
+        prev_data.month_1_recurr_month_2_sales,
+        prev_data.month_1_users_recurr_month_3,
+        prev_data.month_1_recurr_month_3_sales,
+        prev_data.month_1_users_recurr_month_4,
+        prev_data.month_1_recurr_month_4_sales,
+        prev_data.month_1_users_recurr_month_5,
+        prev_data.month_1_recurr_month_5_sales,
+        prev_data.month_1_users_recurr_month_6,
+        prev_data.month_1_recurr_month_6_sales,
+        prev_data.month_1_users_recurr_month_7,
+        prev_data.month_1_recurr_month_7_sales,
+        prev_data.month_1_users_recurr_month_8,
+        prev_data.month_1_recurr_month_8_sales,
+        prev_data.month_1_users_recurr_month_9,
+        prev_data.month_1_recurr_month_9_sales,
+        prev_data.month_1_users_recurr_month_10,
+        prev_data.month_1_recurr_month_10_sales,
+        prev_data.month_1_users_recurr_month_11,
+        prev_data.month_1_recurr_month_11_sales,
+        prev_data.month_1_users_recurr_month_12,
+        prev_data.month_1_recurr_month_12_sales,
+        prev_data.month_1_total_return_users,
+        prev_data.month_2_ntb_conv,
+        prev_data.month_2_ntb_sales,
+        prev_data.month_2_users_recurr_month_3,
+        prev_data.month_2_recurr_month_3_sales,
+        prev_data.month_2_users_recurr_month_4,
+        prev_data.month_2_recurr_month_4_sales,
+        prev_data.month_2_users_recurr_month_5,
+        prev_data.month_2_recurr_month_5_sales,
+        prev_data.month_2_users_recurr_month_6,
+        prev_data.month_2_recurr_month_6_sales,
+        prev_data.month_2_users_recurr_month_7,
+        prev_data.month_2_recurr_month_7_sales,
+        prev_data.month_2_users_recurr_month_8,
+        prev_data.month_2_recurr_month_8_sales,
+        prev_data.month_2_users_recurr_month_9,
+        prev_data.month_2_recurr_month_9_sales,
+        prev_data.month_2_users_recurr_month_10,
+        prev_data.month_2_recurr_month_10_sales,
+        prev_data.month_2_users_recurr_month_11,
+        prev_data.month_2_recurr_month_11_sales,
+        prev_data.month_2_users_recurr_month_12,
+        prev_data.month_2_recurr_month_12_sales,
+        prev_data.month_2_total_return_users,
+        prev_data.month_3_ntb_conv,
+        prev_data.month_3_ntb_sales,
+        prev_data.month_3_users_recurr_month_4,
+        prev_data.month_3_recurr_month_4_sales,
+        prev_data.month_3_users_recurr_month_5,
+        prev_data.month_3_recurr_month_5_sales,
+        prev_data.month_3_users_recurr_month_6,
+        prev_data.month_3_recurr_month_6_sales,
+        prev_data.month_3_users_recurr_month_7,
+        prev_data.month_3_recurr_month_7_sales,
+        prev_data.month_3_users_recurr_month_8,
+        prev_data.month_3_recurr_month_8_sales,
+        prev_data.month_3_users_recurr_month_9,
+        prev_data.month_3_recurr_month_9_sales,
+        prev_data.month_3_users_recurr_month_10,
+        prev_data.month_3_recurr_month_10_sales,
+        prev_data.month_3_users_recurr_month_11,
+        prev_data.month_3_recurr_month_11_sales,
+        prev_data.month_3_users_recurr_month_12,
+        prev_data.month_3_recurr_month_12_sales,
+        prev_data.month_3_total_return_users,
+        prev_data.month_4_ntb_conv,
+        prev_data.month_4_ntb_sales,
+        prev_data.month_4_users_recurr_month_5,
+        prev_data.month_4_recurr_month_5_sales,
+        prev_data.month_4_users_recurr_month_6,
+        prev_data.month_4_recurr_month_6_sales,
+        prev_data.month_4_users_recurr_month_7,
+        prev_data.month_4_recurr_month_7_sales,
+        prev_data.month_4_users_recurr_month_8,
+        prev_data.month_4_recurr_month_8_sales,
+        prev_data.month_4_users_recurr_month_9,
+        prev_data.month_4_recurr_month_9_sales,
+        prev_data.month_4_users_recurr_month_10,
+        prev_data.month_4_recurr_month_10_sales,
+        prev_data.month_4_users_recurr_month_11,
+        prev_data.month_4_recurr_month_11_sales,
+        prev_data.month_4_users_recurr_month_12,
+        prev_data.month_4_recurr_month_12_sales,
+        prev_data.month_4_total_return_users,
+        prev_data.month_5_ntb_conv,
+        prev_data.month_5_ntb_sales,
+        recur.month_5_users_recurr_month_6,
+        recur.month_5_recurr_month_6_sales,
+        recur.month_5_users_recurr_month_7,
+        recur.month_5_recurr_month_7_sales,
+        recur.month_5_users_recurr_month_8,
+        recur.month_5_recurr_month_8_sales,
+        recur.month_5_users_recurr_month_9,
+        recur.month_5_recurr_month_9_sales,
+        recur.month_5_users_recurr_month_10,
+        recur.month_5_recurr_month_10_sales,
+        recur.month_5_users_recurr_month_11,
+        recur.month_5_recurr_month_11_sales,
+        recur.month_5_users_recurr_month_12,
+        recur.month_5_recurr_month_12_sales,
+        recur.month_5_total_return_users
+        FROM
+        month_4_data prev_data
+        LEFT JOIN
+        month_5_recurr recur
+        ON prev_data.campaign &#x3D; recur.campaign
+        GROUP BY
+        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109
+        ),
+        preliminar_data AS (
+        SELECT 
+        prev_data.advertiser,
+        prev_data.campaign,
+        prev_data.total_ntb_users,
+        prev_data.total_ntb_conversions,
+        prev_data.month_1_ntb_conv,
+        prev_data.month_1_ntb_sales,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_users_recurr_month_2, 0) AS month_1_users_recurr_month_2,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_recurr_month_2_sales, 0) AS month_1_recurr_month_2_sales,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_users_recurr_month_3, 0) AS month_1_users_recurr_month_3,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_recurr_month_3_sales, 0) AS month_1_recurr_month_3_sales,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_users_recurr_month_4, 0) AS month_1_users_recurr_month_4,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_recurr_month_4_sales, 0) AS month_1_recurr_month_4_sales,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_users_recurr_month_5, 0) AS month_1_users_recurr_month_5,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_recurr_month_5_sales, 0) AS month_1_recurr_month_5_sales,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_users_recurr_month_6, 0) AS month_1_users_recurr_month_6,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_recurr_month_6_sales, 0) AS month_1_recurr_month_6_sales,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_users_recurr_month_7, 0) AS month_1_users_recurr_month_7,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_recurr_month_7_sales, 0) AS month_1_recurr_month_7_sales,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_users_recurr_month_8, 0) AS month_1_users_recurr_month_8,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_recurr_month_8_sales, 0) AS month_1_recurr_month_8_sales,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_users_recurr_month_9, 0) AS month_1_users_recurr_month_9,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_recurr_month_9_sales, 0) AS month_1_recurr_month_9_sales,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_users_recurr_month_10, 0) AS month_1_users_recurr_month_10,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_recurr_month_10_sales, 0) AS month_1_recurr_month_10_sales,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_users_recurr_month_11, 0) AS month_1_users_recurr_month_11,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_recurr_month_11_sales, 0) AS month_1_recurr_month_11_sales,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_users_recurr_month_12, 0) AS month_1_users_recurr_month_12,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_recurr_month_12_sales, 0) AS month_1_recurr_month_12_sales,
+        IF(prev_data.month_1_ntb_conv&gt;0, prev_data.month_1_total_return_users, 0) AS month_1_total_return_users,
+        prev_data.month_2_ntb_conv,
+        prev_data.month_2_ntb_sales,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_users_recurr_month_3, 0) AS month_2_users_recurr_month_3,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_recurr_month_3_sales, 0) AS month_2_recurr_month_3_sales,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_users_recurr_month_4, 0) AS month_2_users_recurr_month_4,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_recurr_month_4_sales, 0) AS month_2_recurr_month_4_sales,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_users_recurr_month_5, 0) AS month_2_users_recurr_month_5,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_recurr_month_5_sales, 0) AS month_2_recurr_month_5_sales,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_users_recurr_month_6, 0) AS month_2_users_recurr_month_6,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_recurr_month_6_sales, 0) AS month_2_recurr_month_6_sales,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_users_recurr_month_7, 0) AS month_2_users_recurr_month_7,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_recurr_month_7_sales, 0) AS month_2_recurr_month_7_sales,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_users_recurr_month_8, 0) AS month_2_users_recurr_month_8,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_recurr_month_8_sales, 0) AS month_2_recurr_month_8_sales,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_users_recurr_month_9, 0) AS month_2_users_recurr_month_9,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_recurr_month_9_sales, 0) AS month_2_recurr_month_9_sales,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_users_recurr_month_10, 0) AS month_2_users_recurr_month_10,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_recurr_month_10_sales, 0) AS month_2_recurr_month_10_sales,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_users_recurr_month_11, 0) AS month_2_users_recurr_month_11,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_recurr_month_11_sales, 0) AS month_2_recurr_month_11_sales,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_users_recurr_month_12, 0) AS month_2_users_recurr_month_12,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_recurr_month_12_sales, 0) AS month_2_recurr_month_12_sales,
+        IF(prev_data.month_2_ntb_conv&gt;0, prev_data.month_2_total_return_users, 0) AS month_2_total_return_users,
+        prev_data.month_3_ntb_conv,
+        prev_data.month_3_ntb_sales,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_users_recurr_month_4, 0) AS month_3_users_recurr_month_4,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_recurr_month_4_sales, 0) AS month_3_recurr_month_4_sales,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_users_recurr_month_5, 0) AS month_3_users_recurr_month_5,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_recurr_month_5_sales, 0) AS month_3_recurr_month_5_sales,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_users_recurr_month_6, 0) AS month_3_users_recurr_month_6,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_recurr_month_6_sales, 0) AS month_3_recurr_month_6_sales,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_users_recurr_month_7, 0) AS month_3_users_recurr_month_7,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_recurr_month_7_sales, 0) AS month_3_recurr_month_7_sales,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_users_recurr_month_8, 0) AS month_3_users_recurr_month_8,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_recurr_month_8_sales, 0) AS month_3_recurr_month_8_sales,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_users_recurr_month_9, 0) AS month_3_users_recurr_month_9,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_recurr_month_9_sales, 0) AS month_3_recurr_month_9_sales,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_users_recurr_month_10, 0) AS month_3_users_recurr_month_10,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_recurr_month_10_sales, 0) AS month_3_recurr_month_10_sales,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_users_recurr_month_11, 0) AS month_3_users_recurr_month_11,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_recurr_month_11_sales, 0) AS month_3_recurr_month_11_sales,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_users_recurr_month_12, 0) AS month_3_users_recurr_month_12,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_recurr_month_12_sales, 0) AS month_3_recurr_month_12_sales,
+        IF(prev_data.month_3_ntb_conv&gt;0, prev_data.month_3_total_return_users, 0) AS month_3_total_return_users,
+        prev_data.month_4_ntb_conv,
+        prev_data.month_4_ntb_sales,
+        IF(prev_data.month_4_ntb_conv&gt;0, prev_data.month_4_users_recurr_month_5, 0) AS month_4_users_recurr_month_5,
+        IF(prev_data.month_4_ntb_conv&gt;0, prev_data.month_4_recurr_month_5_sales, 0) AS month_4_recurr_month_5_sales,
+        IF(prev_data.month_4_ntb_conv&gt;0, prev_data.month_4_users_recurr_month_6, 0) AS month_4_users_recurr_month_6,
+        IF(prev_data.month_4_ntb_conv&gt;0, prev_data.month_4_recurr_month_6_sales, 0) AS month_4_recurr_month_6_sales,
+        IF(prev_data.month_4_ntb_conv&gt;0, prev_data.month_4_users_recurr_month_7, 0) AS month_4_users_recurr_month_7,
+        IF(prev_data.month_4_ntb_conv&gt;0, prev_data.month_4_recurr_month_7_sales, 0) AS month_4_recurr_month_7_sales,
+        IF(prev_data.month_4_ntb_conv&gt;0, prev_data.month_4_users_recurr_month_8, 0) AS month_4_users_recurr_month_8,
+        IF(prev_data.month_4_ntb_conv&gt;0, prev_data.month_4_recurr_month_8_sales, 0) AS month_4_recurr_month_8_sales,
+        IF(prev_data.month_4_ntb_conv&gt;0, prev_data.month_4_users_recurr_month_9, 0) AS month_4_users_recurr_month_9,
+        IF(prev_data.month_4_ntb_conv&gt;0, prev_data.month_4_recurr_month_9_sales, 0) AS month_4_recurr_month_9_sales,
+        IF(prev_data.month_4_ntb_conv&gt;0, prev_data.month_4_users_recurr_month_10, 0) AS month_4_users_recurr_month_10,
+        IF(prev_data.month_4_ntb_conv&gt;0, prev_data.month_4_recurr_month_10_sales, 0) AS month_4_recurr_month_10_sales,
+        IF(prev_data.month_4_ntb_conv&gt;0, prev_data.month_4_users_recurr_month_11, 0) AS month_4_users_recurr_month_11,
+        IF(prev_data.month_4_ntb_conv&gt;0, prev_data.month_4_recurr_month_11_sales, 0) AS month_4_recurr_month_11_sales,
+        IF(prev_data.month_4_ntb_conv&gt;0, prev_data.month_4_users_recurr_month_12, 0) AS month_4_users_recurr_month_12,
+        IF(prev_data.month_4_ntb_conv&gt;0, prev_data.month_4_recurr_month_12_sales, 0) AS month_4_recurr_month_12_sales,
+        IF(prev_data.month_4_ntb_conv&gt;0, prev_data.month_4_total_return_users, 0) AS month_4_total_return_users,
+        prev_data.month_5_ntb_conv,
+        prev_data.month_5_ntb_sales,
+        IF(prev_data.month_5_ntb_conv&gt;0, prev_data.month_5_users_recurr_month_6, 0) AS month_5_users_recurr_month_6,
+        IF(prev_data.month_5_ntb_conv&gt;0, prev_data.month_5_recurr_month_6_sales, 0) AS month_5_recurr_month_6_sales,
+        IF(prev_data.month_5_ntb_conv&gt;0, prev_data.month_5_users_recurr_month_7, 0) AS month_5_users_recurr_month_7,
+        IF(prev_data.month_5_ntb_conv&gt;0, prev_data.month_5_recurr_month_7_sales, 0) AS month_5_recurr_month_7_sales,
+        IF(prev_data.month_5_ntb_conv&gt;0, prev_data.month_5_users_recurr_month_8, 0) AS month_5_users_recurr_month_8,
+        IF(prev_data.month_5_ntb_conv&gt;0, prev_data.month_5_recurr_month_8_sales, 0) AS month_5_recurr_month_8_sales,
+        IF(prev_data.month_5_ntb_conv&gt;0, prev_data.month_5_users_recurr_month_9, 0) AS month_5_users_recurr_month_9,
+        IF(prev_data.month_5_ntb_conv&gt;0, prev_data.month_5_recurr_month_9_sales, 0) AS month_5_recurr_month_9_sales,
+        IF(prev_data.month_5_ntb_conv&gt;0, prev_data.month_5_users_recurr_month_10, 0) AS month_5_users_recurr_month_10,
+        IF(prev_data.month_5_ntb_conv&gt;0, prev_data.month_5_recurr_month_10_sales, 0) AS month_5_recurr_month_10_sales,
+        IF(prev_data.month_5_ntb_conv&gt;0, prev_data.month_5_users_recurr_month_11, 0) AS month_5_users_recurr_month_11,
+        IF(prev_data.month_5_ntb_conv&gt;0, prev_data.month_5_recurr_month_11_sales, 0) AS month_5_recurr_month_11_sales,
+        IF(prev_data.month_5_ntb_conv&gt;0, prev_data.month_5_users_recurr_month_12, 0) AS month_5_users_recurr_month_12,
+        IF(prev_data.month_5_ntb_conv&gt;0, prev_data.month_5_recurr_month_12_sales, 0) AS month_5_recurr_month_12_sales,
+        IF(prev_data.month_5_ntb_conv&gt;0, prev_data.month_5_total_return_users, 0) AS month_5_total_return_users
+        FROM
+        month_5_data prev_data
+        GROUP BY
+        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109
+        ),
+        percentage_data AS (
+        SELECT 
+        advertiser,
+        campaign,
+        total_ntb_users,
+        total_ntb_conversions,
+        month_1_ntb_conv,
+        IF(month_1_ntb_sales&#x3D;0, 0, ROUND(month_1_ntb_sales/month_1_ntb_conv,1)) AS month_1_ntb_avg_sales,
+        IF(month_1_users_recurr_month_2 IS NULL OR month_1_users_recurr_month_2&#x3D;0, 0, ROUND((month_1_users_recurr_month_2*100)/month_1_ntb_conv,1)) AS month_1_users_recurr_month_2_perc,
+        IF(month_1_recurr_month_2_sales IS NULL OR month_1_recurr_month_2_sales&#x3D;0, 0, ROUND(month_1_recurr_month_2_sales/month_1_users_recurr_month_2,1)) AS month_1_recurr_month_2_avg_sales,
+        IF(month_1_users_recurr_month_3 IS NULL OR month_1_users_recurr_month_3&#x3D;0, 0, ROUND((month_1_users_recurr_month_3*100)/month_1_ntb_conv,1)) AS month_1_users_recurr_month_3_perc,
+        IF(month_1_recurr_month_3_sales IS NULL OR month_1_recurr_month_3_sales&#x3D;0, 0, ROUND(month_1_recurr_month_3_sales/month_1_users_recurr_month_3,1)) AS month_1_recurr_month_3_avg_sales,
+        IF(month_1_users_recurr_month_4 IS NULL OR month_1_users_recurr_month_4&#x3D;0, 0, ROUND((month_1_users_recurr_month_4*100)/month_1_ntb_conv,1)) AS month_1_users_recurr_month_4_perc,
+        IF(month_1_recurr_month_4_sales IS NULL OR month_1_recurr_month_4_sales&#x3D;0, 0, ROUND(month_1_recurr_month_4_sales/month_1_users_recurr_month_4,1)) AS month_1_recurr_month_4_avg_sales,
+        IF(month_1_users_recurr_month_5 IS NULL OR month_1_users_recurr_month_5&#x3D;0, 0, ROUND((month_1_users_recurr_month_5*100)/month_1_ntb_conv,1)) AS month_1_users_recurr_month_5_perc,
+        IF(month_1_recurr_month_5_sales IS NULL OR month_1_recurr_month_5_sales&#x3D;0, 0, ROUND(month_1_recurr_month_5_sales/month_1_users_recurr_month_5,1)) AS month_1_recurr_month_5_avg_sales,
+        IF(month_1_users_recurr_month_6 IS NULL OR month_1_users_recurr_month_6&#x3D;0, 0, ROUND((month_1_users_recurr_month_6*100)/month_1_ntb_conv,1)) AS month_1_users_recurr_month_6_perc,
+        IF(month_1_recurr_month_6_sales IS NULL OR month_1_recurr_month_6_sales&#x3D;0, 0, ROUND(month_1_recurr_month_6_sales/month_1_users_recurr_month_6,1)) AS month_1_recurr_month_6_avg_sales,
+        IF(month_1_users_recurr_month_7 IS NULL OR month_1_users_recurr_month_7&#x3D;0, 0, ROUND((month_1_users_recurr_month_7*100)/month_1_ntb_conv,1)) AS month_1_users_recurr_month_7_perc,
+        IF(month_1_recurr_month_7_sales IS NULL OR month_1_recurr_month_7_sales&#x3D;0, 0, ROUND(month_1_recurr_month_7_sales/month_1_users_recurr_month_7,1)) AS month_1_recurr_month_7_avg_sales,
+        IF(month_1_users_recurr_month_8 IS NULL OR month_1_users_recurr_month_8&#x3D;0, 0, ROUND((month_1_users_recurr_month_8*100)/month_1_ntb_conv,1)) AS month_1_users_recurr_month_8_perc,
+        IF(month_1_recurr_month_8_sales IS NULL OR month_1_recurr_month_8_sales&#x3D;0, 0, ROUND(month_1_recurr_month_8_sales/month_1_users_recurr_month_8,1)) AS month_1_recurr_month_8_avg_sales,
+        IF(month_1_users_recurr_month_9 IS NULL OR month_1_users_recurr_month_9&#x3D;0, 0, ROUND((month_1_users_recurr_month_9*100)/month_1_ntb_conv,1)) AS month_1_users_recurr_month_9_perc,
+        IF(month_1_recurr_month_9_sales IS NULL OR month_1_recurr_month_9_sales&#x3D;0, 0, ROUND(month_1_recurr_month_9_sales/month_1_users_recurr_month_9,1)) AS month_1_recurr_month_9_avg_sales,
+        IF(month_1_users_recurr_month_10 IS NULL OR month_1_users_recurr_month_10&#x3D;0, 0, ROUND((month_1_users_recurr_month_10*100)/month_1_ntb_conv,1)) AS month_1_users_recurr_month_10_perc,
+        IF(month_1_recurr_month_10_sales IS NULL OR month_1_recurr_month_10_sales&#x3D;0, 0, ROUND(month_1_recurr_month_10_sales/month_1_users_recurr_month_10,1)) AS month_1_recurr_month_10_avg_sales,
+        IF(month_1_users_recurr_month_11 IS NULL OR month_1_users_recurr_month_11&#x3D;0, 0, ROUND((month_1_users_recurr_month_11*100)/month_1_ntb_conv,1)) AS month_1_users_recurr_month_11_perc,
+        IF(month_1_recurr_month_11_sales IS NULL OR month_1_recurr_month_11_sales&#x3D;0, 0, ROUND(month_1_recurr_month_11_sales/month_1_users_recurr_month_11,1)) AS month_1_recurr_month_11_avg_sales,
+        IF(month_1_users_recurr_month_12 IS NULL OR month_1_users_recurr_month_12&#x3D;0, 0, ROUND((month_1_users_recurr_month_12*100)/month_1_ntb_conv,1)) AS month_1_users_recurr_month_12_perc,
+        IF(month_1_recurr_month_12_sales IS NULL OR month_1_recurr_month_12_sales&#x3D;0, 0, ROUND(month_1_recurr_month_12_sales/month_1_users_recurr_month_12,1)) AS month_1_recurr_month_12_avg_sales,
+        IF(month_1_total_return_users IS NULL OR month_1_total_return_users&#x3D;0, 0, ROUND((month_1_total_return_users*100)/month_1_ntb_conv,1)) AS month_1_total_return_users_perc,
+        month_2_ntb_conv,
+        IF(month_2_ntb_sales&#x3D;0, 0, ROUND(month_2_ntb_sales/month_2_ntb_conv,1)) AS month_2_ntb_avg_sales,
+        IF(month_2_users_recurr_month_3 IS NULL OR month_2_users_recurr_month_3&#x3D;0, 0, ROUND((month_2_users_recurr_month_3*100)/month_2_ntb_conv,1)) AS month_2_users_recurr_month_3_perc,
+        IF(month_2_recurr_month_3_sales IS NULL OR month_2_recurr_month_3_sales&#x3D;0, 0, ROUND(month_2_recurr_month_3_sales/month_2_users_recurr_month_3,1)) AS month_2_recurr_month_3_avg_sales,
+        IF(month_2_users_recurr_month_4 IS NULL OR month_2_users_recurr_month_4&#x3D;0, 0, ROUND((month_2_users_recurr_month_4*100)/month_2_ntb_conv,1)) AS month_2_users_recurr_month_4_perc,
+        IF(month_2_recurr_month_4_sales IS NULL OR month_2_recurr_month_4_sales&#x3D;0, 0, ROUND(month_2_recurr_month_4_sales/month_2_users_recurr_month_4,1)) AS month_2_recurr_month_4_avg_sales,
+        IF(month_2_users_recurr_month_5 IS NULL OR month_2_users_recurr_month_5&#x3D;0, 0, ROUND((month_2_users_recurr_month_5*100)/month_2_ntb_conv,1)) AS month_2_users_recurr_month_5_perc,
+        IF(month_2_recurr_month_5_sales IS NULL OR month_2_recurr_month_5_sales&#x3D;0, 0, ROUND(month_2_recurr_month_5_sales/month_2_users_recurr_month_5,1)) AS month_2_recurr_month_5_avg_sales,
+        IF(month_2_users_recurr_month_6 IS NULL OR month_2_users_recurr_month_6&#x3D;0, 0, ROUND((month_2_users_recurr_month_6*100)/month_2_ntb_conv,1)) AS month_2_users_recurr_month_6_perc,
+        IF(month_2_recurr_month_6_sales IS NULL OR month_2_recurr_month_6_sales&#x3D;0, 0, ROUND(month_2_recurr_month_6_sales/month_2_users_recurr_month_6,1)) AS month_2_recurr_month_6_avg_sales,
+        IF(month_2_users_recurr_month_7 IS NULL OR month_2_users_recurr_month_7&#x3D;0, 0, ROUND((month_2_users_recurr_month_7*100)/month_2_ntb_conv,1)) AS month_2_users_recurr_month_7_perc,
+        IF(month_2_recurr_month_7_sales IS NULL OR month_2_recurr_month_7_sales&#x3D;0, 0, ROUND(month_2_recurr_month_7_sales/month_2_users_recurr_month_7,1)) AS month_2_recurr_month_7_avg_sales,
+        IF(month_2_users_recurr_month_8 IS NULL OR month_2_users_recurr_month_8&#x3D;0, 0, ROUND((month_2_users_recurr_month_8*100)/month_2_ntb_conv,1)) AS month_2_users_recurr_month_8_perc,
+        IF(month_2_recurr_month_8_sales IS NULL OR month_2_recurr_month_8_sales&#x3D;0, 0, ROUND(month_2_recurr_month_8_sales/month_2_users_recurr_month_8,1)) AS month_2_recurr_month_8_avg_sales,
+        IF(month_2_users_recurr_month_9 IS NULL OR month_2_users_recurr_month_9&#x3D;0, 0, ROUND((month_2_users_recurr_month_9*100)/month_2_ntb_conv,1)) AS month_2_users_recurr_month_9_perc,
+        IF(month_2_recurr_month_9_sales IS NULL OR month_2_recurr_month_9_sales&#x3D;0, 0, ROUND(month_2_recurr_month_9_sales/month_2_users_recurr_month_9,1)) AS month_2_recurr_month_9_avg_sales,
+        IF(month_2_users_recurr_month_10 IS NULL OR month_2_users_recurr_month_10&#x3D;0, 0, ROUND((month_2_users_recurr_month_10*100)/month_2_ntb_conv,1)) AS month_2_users_recurr_month_10_perc,
+        IF(month_2_recurr_month_10_sales IS NULL OR month_2_recurr_month_10_sales&#x3D;0, 0, ROUND(month_2_recurr_month_10_sales/month_2_users_recurr_month_10,1)) AS month_2_recurr_month_10_avg_sales,
+        IF(month_2_users_recurr_month_11 IS NULL OR month_2_users_recurr_month_11&#x3D;0, 0, ROUND((month_2_users_recurr_month_11*100)/month_2_ntb_conv,1)) AS month_2_users_recurr_month_11_perc,
+        IF(month_2_recurr_month_11_sales IS NULL OR month_2_recurr_month_11_sales&#x3D;0, 0, ROUND(month_2_recurr_month_11_sales/month_2_users_recurr_month_11,1)) AS month_2_recurr_month_11_avg_sales,
+        IF(month_2_users_recurr_month_12 IS NULL OR month_2_users_recurr_month_12&#x3D;0, 0, ROUND((month_2_users_recurr_month_12*100)/month_2_ntb_conv,1)) AS month_2_users_recurr_month_12_perc,
+        IF(month_2_recurr_month_12_sales IS NULL OR month_2_recurr_month_12_sales&#x3D;0, 0, ROUND(month_2_recurr_month_12_sales/month_2_users_recurr_month_12,1)) AS month_2_recurr_month_12_avg_sales,
+        IF(month_2_total_return_users IS NULL OR month_2_total_return_users&#x3D;0, 0, ROUND((month_2_total_return_users*100)/month_2_ntb_conv,1)) AS month_2_total_return_users_perc,
+        month_3_ntb_conv,
+        IF(month_3_ntb_sales&#x3D;0, 0, ROUND(month_3_ntb_sales/month_3_ntb_conv,1)) AS month_3_ntb_avg_sales,
+        IF(month_3_users_recurr_month_4 IS NULL OR month_3_users_recurr_month_4&#x3D;0, 0, ROUND((month_3_users_recurr_month_4*100)/month_3_ntb_conv,1)) AS month_3_users_recurr_month_4_perc,
+        IF(month_3_recurr_month_4_sales IS NULL OR month_3_recurr_month_4_sales&#x3D;0, 0, ROUND(month_3_recurr_month_4_sales/month_3_users_recurr_month_4,1)) AS month_3_recurr_month_4_avg_sales,
+        IF(month_3_users_recurr_month_5 IS NULL OR month_3_users_recurr_month_5&#x3D;0, 0, ROUND((month_3_users_recurr_month_5*100)/month_3_ntb_conv,1)) AS month_3_users_recurr_month_5_perc,
+        IF(month_3_recurr_month_5_sales IS NULL OR month_3_recurr_month_5_sales&#x3D;0, 0, ROUND(month_3_recurr_month_5_sales/month_3_users_recurr_month_5,1)) AS month_3_recurr_month_5_avg_sales,
+        IF(month_3_users_recurr_month_6 IS NULL OR month_3_users_recurr_month_6&#x3D;0, 0, ROUND((month_3_users_recurr_month_6*100)/month_3_ntb_conv,1)) AS month_3_users_recurr_month_6_perc,
+        IF(month_3_recurr_month_6_sales IS NULL OR month_3_recurr_month_6_sales&#x3D;0, 0, ROUND(month_3_recurr_month_6_sales/month_3_users_recurr_month_6,1)) AS month_3_recurr_month_6_avg_sales,
+        IF(month_3_users_recurr_month_7 IS NULL OR month_3_users_recurr_month_7&#x3D;0, 0, ROUND((month_3_users_recurr_month_7*100)/month_3_ntb_conv,1)) AS month_3_users_recurr_month_7_perc,
+        IF(month_3_recurr_month_7_sales IS NULL OR month_3_recurr_month_7_sales&#x3D;0, 0, ROUND(month_3_recurr_month_7_sales/month_3_users_recurr_month_7,1)) AS month_3_recurr_month_7_avg_sales,
+        IF(month_3_users_recurr_month_8 IS NULL OR month_3_users_recurr_month_8&#x3D;0, 0, ROUND((month_3_users_recurr_month_8*100)/month_3_ntb_conv,1)) AS month_3_users_recurr_month_8_perc,
+        IF(month_3_recurr_month_8_sales IS NULL OR month_3_recurr_month_8_sales&#x3D;0, 0, ROUND(month_3_recurr_month_8_sales/month_3_users_recurr_month_8,1)) AS month_3_recurr_month_8_avg_sales,
+        IF(month_3_users_recurr_month_9 IS NULL OR month_3_users_recurr_month_9&#x3D;0, 0, ROUND((month_3_users_recurr_month_9*100)/month_3_ntb_conv,1)) AS month_3_users_recurr_month_9_perc,
+        IF(month_3_recurr_month_9_sales IS NULL OR month_3_recurr_month_9_sales&#x3D;0, 0, ROUND(month_3_recurr_month_9_sales/month_3_users_recurr_month_9,1)) AS month_3_recurr_month_9_avg_sales,
+        IF(month_3_users_recurr_month_10 IS NULL OR month_3_users_recurr_month_10&#x3D;0, 0, ROUND((month_3_users_recurr_month_10*100)/month_3_ntb_conv,1)) AS month_3_users_recurr_month_10_perc,
+        IF(month_3_recurr_month_10_sales IS NULL OR month_3_recurr_month_10_sales&#x3D;0, 0, ROUND(month_3_recurr_month_10_sales/month_3_users_recurr_month_10,1)) AS month_3_recurr_month_10_avg_sales,
+        IF(month_3_users_recurr_month_11 IS NULL OR month_3_users_recurr_month_11&#x3D;0, 0, ROUND((month_3_users_recurr_month_11*100)/month_3_ntb_conv,1)) AS month_3_users_recurr_month_11_perc,
+        IF(month_3_recurr_month_11_sales IS NULL OR month_3_recurr_month_11_sales&#x3D;0, 0, ROUND(month_3_recurr_month_11_sales/month_3_users_recurr_month_11,1)) AS month_3_recurr_month_11_avg_sales,
+        IF(month_3_users_recurr_month_12 IS NULL OR month_3_users_recurr_month_12&#x3D;0, 0, ROUND((month_3_users_recurr_month_12*100)/month_3_ntb_conv,1)) AS month_3_users_recurr_month_12_perc,
+        IF(month_3_recurr_month_12_sales IS NULL OR month_3_recurr_month_12_sales&#x3D;0, 0, ROUND(month_3_recurr_month_12_sales/month_3_users_recurr_month_12,1)) AS month_3_recurr_month_12_avg_sales,
+        IF(month_3_total_return_users IS NULL OR month_3_total_return_users&#x3D;0, 0, ROUND((month_3_total_return_users*100)/month_3_ntb_conv,1)) AS month_3_total_return_users_perc,
+        month_4_ntb_conv,
+        IF(month_4_ntb_sales&#x3D;0, 0, ROUND(month_4_ntb_sales/month_4_ntb_conv,1)) AS month_4_ntb_avg_sales,
+        IF(month_4_users_recurr_month_5 IS NULL OR month_4_users_recurr_month_5&#x3D;0, 0, ROUND((month_4_users_recurr_month_5*100)/month_4_ntb_conv,1)) AS month_4_users_recurr_month_5_perc,
+        IF(month_4_recurr_month_5_sales IS NULL OR month_4_recurr_month_5_sales&#x3D;0, 0, ROUND(month_4_recurr_month_5_sales/month_4_users_recurr_month_5,1)) AS month_4_recurr_month_5_avg_sales,
+        IF(month_4_users_recurr_month_6 IS NULL OR month_4_users_recurr_month_6&#x3D;0, 0, ROUND((month_4_users_recurr_month_6*100)/month_4_ntb_conv,1)) AS month_4_users_recurr_month_6_perc,
+        IF(month_4_recurr_month_6_sales IS NULL OR month_4_recurr_month_6_sales&#x3D;0, 0, ROUND(month_4_recurr_month_6_sales/month_4_users_recurr_month_6,1)) AS month_4_recurr_month_6_avg_sales,
+        IF(month_4_users_recurr_month_7 IS NULL OR month_4_users_recurr_month_7&#x3D;0, 0, ROUND((month_4_users_recurr_month_7*100)/month_4_ntb_conv,1)) AS month_4_users_recurr_month_7_perc,
+        IF(month_4_recurr_month_7_sales IS NULL OR month_4_recurr_month_7_sales&#x3D;0, 0, ROUND(month_4_recurr_month_7_sales/month_4_users_recurr_month_7,1)) AS month_4_recurr_month_7_avg_sales,
+        IF(month_4_users_recurr_month_8 IS NULL OR month_4_users_recurr_month_8&#x3D;0, 0, ROUND((month_4_users_recurr_month_8*100)/month_4_ntb_conv,1)) AS month_4_users_recurr_month_8_perc,
+        IF(month_4_recurr_month_8_sales IS NULL OR month_4_recurr_month_8_sales&#x3D;0, 0, ROUND(month_4_recurr_month_8_sales/month_4_users_recurr_month_8,1)) AS month_4_recurr_month_8_avg_sales,
+        IF(month_4_users_recurr_month_9 IS NULL OR month_4_users_recurr_month_9&#x3D;0, 0, ROUND((month_4_users_recurr_month_9*100)/month_4_ntb_conv,1)) AS month_4_users_recurr_month_9_perc,
+        IF(month_4_recurr_month_9_sales IS NULL OR month_4_recurr_month_9_sales&#x3D;0, 0, ROUND(month_4_recurr_month_9_sales/month_4_users_recurr_month_9,1)) AS month_4_recurr_month_9_avg_sales,
+        IF(month_4_users_recurr_month_10 IS NULL OR month_4_users_recurr_month_10&#x3D;0, 0, ROUND((month_4_users_recurr_month_10*100)/month_4_ntb_conv,1)) AS month_4_users_recurr_month_10_perc,
+        IF(month_4_recurr_month_10_sales IS NULL OR month_4_recurr_month_10_sales&#x3D;0, 0, ROUND(month_4_recurr_month_10_sales/month_4_users_recurr_month_10,1)) AS month_4_recurr_month_10_avg_sales,
+        IF(month_4_users_recurr_month_11 IS NULL OR month_4_users_recurr_month_11&#x3D;0, 0, ROUND((month_4_users_recurr_month_11*100)/month_4_ntb_conv,1)) AS month_4_users_recurr_month_11_perc,
+        IF(month_4_recurr_month_11_sales IS NULL OR month_4_recurr_month_11_sales&#x3D;0, 0, ROUND(month_4_recurr_month_11_sales/month_4_users_recurr_month_11,1)) AS month_4_recurr_month_11_avg_sales,
+        IF(month_4_users_recurr_month_12 IS NULL OR month_4_users_recurr_month_12&#x3D;0, 0, ROUND((month_4_users_recurr_month_12*100)/month_4_ntb_conv,1)) AS month_4_users_recurr_month_12_perc,
+        IF(month_4_recurr_month_12_sales IS NULL OR month_4_recurr_month_12_sales&#x3D;0, 0, ROUND(month_4_recurr_month_12_sales/month_4_users_recurr_month_12,1)) AS month_4_recurr_month_12_avg_sales,
+        IF(month_4_total_return_users IS NULL OR month_4_total_return_users&#x3D;0, 0, ROUND((month_4_total_return_users*100)/month_4_ntb_conv,1)) AS month_4_total_return_users_perc,
+        month_5_ntb_conv,
+        IF(month_5_ntb_sales&#x3D;0, 0, ROUND(month_5_ntb_sales/month_5_ntb_conv,1)) AS month_5_ntb_avg_sales,
+        IF(month_5_users_recurr_month_6 IS NULL OR month_5_users_recurr_month_6&#x3D;0, 0, ROUND((month_5_users_recurr_month_6*100)/month_5_ntb_conv,1)) AS month_5_users_recurr_month_6_perc,
+        IF(month_5_recurr_month_6_sales IS NULL OR month_5_recurr_month_6_sales&#x3D;0, 0, ROUND(month_5_recurr_month_6_sales/month_5_users_recurr_month_6,1)) AS month_5_recurr_month_6_avg_sales,
+        IF(month_5_users_recurr_month_7 IS NULL OR month_5_users_recurr_month_7&#x3D;0, 0, ROUND((month_5_users_recurr_month_7*100)/month_5_ntb_conv,1)) AS month_5_users_recurr_month_7_perc,
+        IF(month_5_recurr_month_7_sales IS NULL OR month_5_recurr_month_7_sales&#x3D;0, 0, ROUND(month_5_recurr_month_7_sales/month_5_users_recurr_month_7,1)) AS month_5_recurr_month_7_avg_sales,
+        IF(month_5_users_recurr_month_8 IS NULL OR month_5_users_recurr_month_8&#x3D;0, 0, ROUND((month_5_users_recurr_month_8*100)/month_5_ntb_conv,1)) AS month_5_users_recurr_month_8_perc,
+        IF(month_5_recurr_month_8_sales IS NULL OR month_5_recurr_month_8_sales&#x3D;0, 0, ROUND(month_5_recurr_month_8_sales/month_5_users_recurr_month_8,1)) AS month_5_recurr_month_8_avg_sales,
+        IF(month_5_users_recurr_month_9 IS NULL OR month_5_users_recurr_month_9&#x3D;0, 0, ROUND((month_5_users_recurr_month_9*100)/month_5_ntb_conv,1)) AS month_5_users_recurr_month_9_perc,
+        IF(month_5_recurr_month_9_sales IS NULL OR month_5_recurr_month_9_sales&#x3D;0, 0, ROUND(month_5_recurr_month_9_sales/month_5_users_recurr_month_9,1)) AS month_5_recurr_month_9_avg_sales,
+        IF(month_5_users_recurr_month_10 IS NULL OR month_5_users_recurr_month_10&#x3D;0, 0, ROUND((month_5_users_recurr_month_10*100)/month_5_ntb_conv,1)) AS month_5_users_recurr_month_10_perc,
+        IF(month_5_recurr_month_10_sales IS NULL OR month_5_recurr_month_10_sales&#x3D;0, 0, ROUND(month_5_recurr_month_10_sales/month_5_users_recurr_month_10,1)) AS month_5_recurr_month_10_avg_sales,
+        IF(month_5_users_recurr_month_11 IS NULL OR month_5_users_recurr_month_11&#x3D;0, 0, ROUND((month_5_users_recurr_month_11*100)/month_5_ntb_conv,1)) AS month_5_users_recurr_month_11_perc,
+        IF(month_5_recurr_month_11_sales IS NULL OR month_5_recurr_month_11_sales&#x3D;0, 0, ROUND(month_5_recurr_month_11_sales/month_5_users_recurr_month_11,1)) AS month_5_recurr_month_11_avg_sales,
+        IF(month_5_users_recurr_month_12 IS NULL OR month_5_users_recurr_month_12&#x3D;0, 0, ROUND((month_5_users_recurr_month_12*100)/month_5_ntb_conv,1)) AS month_5_users_recurr_month_12_perc,
+        IF(month_5_recurr_month_12_sales IS NULL OR month_5_recurr_month_12_sales&#x3D;0, 0, ROUND(month_5_recurr_month_12_sales/month_5_users_recurr_month_12,1)) AS month_5_recurr_month_12_avg_sales,
+        IF(month_5_total_return_users IS NULL OR month_5_total_return_users&#x3D;0, 0, ROUND((month_5_total_return_users*100)/month_5_ntb_conv,1)) AS month_5_total_return_users_perc
+        FROM
+        preliminar_data
+        GROUP BY
+        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109
+        ),
+        final_data AS (
+        SELECT 
+        advertiser,
+        campaign,
+        total_ntb_users,
+        total_ntb_conversions,
+        month_1_ntb_conv,
+        month_1_ntb_avg_sales,
+        month_1_users_recurr_month_2_perc,
+        month_1_recurr_month_2_avg_sales,
+        month_1_users_recurr_month_3_perc,
+        month_1_recurr_month_3_avg_sales,
+        month_1_users_recurr_month_4_perc,
+        month_1_recurr_month_4_avg_sales,
+        month_1_users_recurr_month_5_perc,
+        month_1_recurr_month_5_avg_sales,
+        month_1_users_recurr_month_6_perc,
+        month_1_recurr_month_6_avg_sales,
+        month_1_users_recurr_month_7_perc,
+        month_1_recurr_month_7_avg_sales,
+        month_1_users_recurr_month_8_perc,
+        month_1_recurr_month_8_avg_sales,
+        month_1_users_recurr_month_9_perc,
+        month_1_recurr_month_9_avg_sales,
+        month_1_users_recurr_month_10_perc,
+        month_1_recurr_month_10_avg_sales,
+        month_1_users_recurr_month_11_perc,
+        month_1_recurr_month_11_avg_sales,
+        month_1_users_recurr_month_12_perc,
+        month_1_recurr_month_12_avg_sales,
+        (month_1_ntb_avg_sales+month_1_recurr_month_2_avg_sales+month_1_recurr_month_3_avg_sales+month_1_recurr_month_4_avg_sales+month_1_recurr_month_5_avg_sales+month_1_recurr_month_6_avg_sales+month_1_recurr_month_7_avg_sales+month_1_recurr_month_8_avg_sales+month_1_recurr_month_9_avg_sales+month_1_recurr_month_10_avg_sales+month_1_recurr_month_11_avg_sales+month_1_recurr_month_12_avg_sales) AS month_1_total_avg_sales,
+        month_1_total_return_users_perc,
+        month_2_ntb_conv,
+        month_2_ntb_avg_sales,
+        month_2_users_recurr_month_3_perc,
+        month_2_recurr_month_3_avg_sales,
+        month_2_users_recurr_month_4_perc,
+        month_2_recurr_month_4_avg_sales,
+        month_2_users_recurr_month_5_perc,
+        month_2_recurr_month_5_avg_sales,
+        month_2_users_recurr_month_6_perc,
+        month_2_recurr_month_6_avg_sales,
+        month_2_users_recurr_month_7_perc,
+        month_2_recurr_month_7_avg_sales,
+        month_2_users_recurr_month_8_perc,
+        month_2_recurr_month_8_avg_sales,
+        month_2_users_recurr_month_9_perc,
+        month_2_recurr_month_9_avg_sales,
+        month_2_users_recurr_month_10_perc,
+        month_2_recurr_month_10_avg_sales,
+        month_2_users_recurr_month_11_perc,
+        month_2_recurr_month_11_avg_sales,
+        month_2_users_recurr_month_12_perc,
+        month_2_recurr_month_12_avg_sales,
+        (month_2_ntb_avg_sales+month_2_recurr_month_3_avg_sales+month_2_recurr_month_4_avg_sales+month_2_recurr_month_5_avg_sales+month_2_recurr_month_6_avg_sales+month_2_recurr_month_7_avg_sales+month_2_recurr_month_8_avg_sales+month_2_recurr_month_9_avg_sales+month_2_recurr_month_10_avg_sales+month_2_recurr_month_11_avg_sales+month_2_recurr_month_12_avg_sales) AS month_2_total_avg_sales,
+        month_2_total_return_users_perc,
+        month_3_ntb_conv,
+        month_3_ntb_avg_sales,
+        month_3_users_recurr_month_4_perc,
+        month_3_recurr_month_4_avg_sales,
+        month_3_users_recurr_month_5_perc,
+        month_3_recurr_month_5_avg_sales,
+        month_3_users_recurr_month_6_perc,
+        month_3_recurr_month_6_avg_sales,
+        month_3_users_recurr_month_7_perc,
+        month_3_recurr_month_7_avg_sales,
+        month_3_users_recurr_month_8_perc,
+        month_3_recurr_month_8_avg_sales,
+        month_3_users_recurr_month_9_perc,
+        month_3_recurr_month_9_avg_sales,
+        month_3_users_recurr_month_10_perc,
+        month_3_recurr_month_10_avg_sales,
+        month_3_users_recurr_month_11_perc,
+        month_3_recurr_month_11_avg_sales,
+        month_3_users_recurr_month_12_perc,
+        month_3_recurr_month_12_avg_sales,
+        (month_3_ntb_avg_sales+month_3_recurr_month_4_avg_sales+month_3_recurr_month_5_avg_sales+month_3_recurr_month_6_avg_sales+month_3_recurr_month_7_avg_sales+month_3_recurr_month_8_avg_sales+month_3_recurr_month_9_avg_sales+month_3_recurr_month_10_avg_sales+month_3_recurr_month_11_avg_sales+month_3_recurr_month_12_avg_sales) AS month_3_total_avg_sales,
+        month_3_total_return_users_perc,
+        month_4_ntb_conv,
+        month_4_ntb_avg_sales,
+        month_4_users_recurr_month_5_perc,
+        month_4_recurr_month_5_avg_sales,
+        month_4_users_recurr_month_6_perc,
+        month_4_recurr_month_6_avg_sales,
+        month_4_users_recurr_month_7_perc,
+        month_4_recurr_month_7_avg_sales,
+        month_4_users_recurr_month_8_perc,
+        month_4_recurr_month_8_avg_sales,
+        month_4_users_recurr_month_9_perc,
+        month_4_recurr_month_9_avg_sales,
+        month_4_users_recurr_month_10_perc,
+        month_4_recurr_month_10_avg_sales,
+        month_4_users_recurr_month_11_perc,
+        month_4_recurr_month_11_avg_sales,
+        month_4_users_recurr_month_12_perc,
+        month_4_recurr_month_12_avg_sales,
+        (month_4_ntb_avg_sales+month_4_recurr_month_5_avg_sales+month_4_recurr_month_6_avg_sales+month_4_recurr_month_7_avg_sales+month_4_recurr_month_8_avg_sales+month_4_recurr_month_9_avg_sales+month_4_recurr_month_10_avg_sales+month_4_recurr_month_11_avg_sales+month_4_recurr_month_12_avg_sales) AS month_4_total_avg_sales,
+        month_4_total_return_users_perc,
+        month_5_ntb_conv,
+        month_5_ntb_avg_sales,
+        month_5_users_recurr_month_6_perc,
+        month_5_recurr_month_6_avg_sales,
+        month_5_users_recurr_month_7_perc,
+        month_5_recurr_month_7_avg_sales,
+        month_5_users_recurr_month_8_perc,
+        month_5_recurr_month_8_avg_sales,
+        month_5_users_recurr_month_9_perc,
+        month_5_recurr_month_9_avg_sales,
+        month_5_users_recurr_month_10_perc,
+        month_5_recurr_month_10_avg_sales,
+        month_5_users_recurr_month_11_perc,
+        month_5_recurr_month_11_avg_sales,
+        month_5_users_recurr_month_12_perc,
+        month_5_recurr_month_12_avg_sales,
+        (month_5_ntb_avg_sales+month_5_recurr_month_6_avg_sales+month_5_recurr_month_7_avg_sales+month_5_recurr_month_8_avg_sales+month_5_recurr_month_9_avg_sales+month_5_recurr_month_10_avg_sales+month_5_recurr_month_11_avg_sales+month_5_recurr_month_12_avg_sales) AS month_5_total_avg_sales,
+        month_5_total_return_users_perc
+        FROM 
+        percentage_data
+        GROUP BY
+        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114
+        )
+        SELECT
+        advertiser,
+        campaign,
+        total_ntb_users,
+        total_ntb_conversions,
+        month_1_ntb_conv AS ${dates_map.get(&#x27;month_1&#x27;).month}_ntb_conv,
+        month_1_ntb_avg_sales AS ${dates_map.get(&#x27;month_1&#x27;).month}_ntb_avg_sales,
+        month_1_users_recurr_month_2_perc AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_perc,
+        month_1_recurr_month_2_avg_sales AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_avg_sales,
+        month_1_users_recurr_month_3_perc AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_perc,
+        month_1_recurr_month_3_avg_sales AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_avg_sales,
+        month_1_users_recurr_month_4_perc AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_perc,
+        month_1_recurr_month_4_avg_sales AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_avg_sales,
+        month_1_users_recurr_month_5_perc AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_perc,
+        month_1_recurr_month_5_avg_sales AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_avg_sales,
+        month_1_users_recurr_month_6_perc AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_perc,
+        month_1_recurr_month_6_avg_sales AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_avg_sales,
+        month_1_users_recurr_month_7_perc AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_perc,
+        month_1_recurr_month_7_avg_sales AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_avg_sales,
+        month_1_users_recurr_month_8_perc AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_perc,
+        month_1_recurr_month_8_avg_sales AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_avg_sales,
+        month_1_users_recurr_month_9_perc AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_perc,
+        month_1_recurr_month_9_avg_sales AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_avg_sales,
+        month_1_users_recurr_month_10_perc AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_perc,
+        month_1_recurr_month_10_avg_sales AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_avg_sales,
+        month_1_users_recurr_month_11_perc AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_perc,
+        month_1_recurr_month_11_avg_sales AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_avg_sales,
+        month_1_users_recurr_month_12_perc AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_perc,
+        month_1_recurr_month_12_avg_sales AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_avg_sales,
+        month_1_total_avg_sales AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_total_avg_sales,
+        month_1_total_return_users_perc AS ${dates_map.get(&#x27;month_1&#x27;).month}_${dates_map.get(&#x27;month_1&#x27;).date.slice(0, 4)}_total_return_users_perc,
+        month_2_ntb_conv AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_ntb_conv,
+        month_2_ntb_avg_sales AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_ntb_avg_sales,
+        month_2_users_recurr_month_3_perc AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_perc,
+        month_2_recurr_month_3_avg_sales AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_avg_sales,
+        month_2_users_recurr_month_4_perc AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_perc,
+        month_2_recurr_month_4_avg_sales AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_avg_sales,
+        month_2_users_recurr_month_5_perc AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_perc,
+        month_2_recurr_month_5_avg_sales AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_avg_sales,
+        month_2_users_recurr_month_6_perc AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_perc,
+        month_2_recurr_month_6_avg_sales AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_avg_sales,
+        month_2_users_recurr_month_7_perc AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_perc,
+        month_2_recurr_month_7_avg_sales AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_avg_sales,
+        month_2_users_recurr_month_8_perc AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_perc,
+        month_2_recurr_month_8_avg_sales AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_avg_sales,
+        month_2_users_recurr_month_9_perc AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_perc,
+        month_2_recurr_month_9_avg_sales AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_avg_sales,
+        month_2_users_recurr_month_10_perc AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_perc,
+        month_2_recurr_month_10_avg_sales AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_avg_sales,
+        month_2_users_recurr_month_11_perc AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_perc,
+        month_2_recurr_month_11_avg_sales AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_avg_sales,
+        month_2_users_recurr_month_12_perc AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_perc,
+        month_2_recurr_month_12_avg_sales AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_avg_sales,
+        month_2_total_avg_sales AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_total_avg_sales,
+        month_2_total_return_users_perc AS ${dates_map.get(&#x27;month_2&#x27;).month}_${dates_map.get(&#x27;month_2&#x27;).date.slice(0, 4)}_total_return_users_perc,
+        month_3_ntb_conv AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_ntb_conv,
+        month_3_ntb_avg_sales AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_ntb_avg_sales,
+        month_3_users_recurr_month_4_perc AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_perc,
+        month_3_recurr_month_4_avg_sales AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_avg_sales,
+        month_3_users_recurr_month_5_perc AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_perc,
+        month_3_recurr_month_5_avg_sales AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_avg_sales,
+        month_3_users_recurr_month_6_perc AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_perc,
+        month_3_recurr_month_6_avg_sales AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_avg_sales,
+        month_3_users_recurr_month_7_perc AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_perc,
+        month_3_recurr_month_7_avg_sales AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_avg_sales,
+        month_3_users_recurr_month_8_perc AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_perc,
+        month_3_recurr_month_8_avg_sales AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_avg_sales,
+        month_3_users_recurr_month_9_perc AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_perc,
+        month_3_recurr_month_9_avg_sales AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_avg_sales,
+        month_3_users_recurr_month_10_perc AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_perc,
+        month_3_recurr_month_10_avg_sales AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_avg_sales,
+        month_3_users_recurr_month_11_perc AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_perc,
+        month_3_recurr_month_11_avg_sales AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_avg_sales,
+        month_3_users_recurr_month_12_perc AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_perc,
+        month_3_recurr_month_12_avg_sales AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_avg_sales,
+        month_3_total_avg_sales AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_total_avg_sales,
+        month_3_total_return_users_perc AS ${dates_map.get(&#x27;month_3&#x27;).month}_${dates_map.get(&#x27;month_3&#x27;).date.slice(0, 4)}_total_return_users_perc,
+        month_4_ntb_conv AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_ntb_conv,
+        month_4_ntb_avg_sales AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_ntb_avg_sales,
+        month_4_users_recurr_month_5_perc AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_perc,
+        month_4_recurr_month_5_avg_sales AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_avg_sales,
+        month_4_users_recurr_month_6_perc AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_perc,
+        month_4_recurr_month_6_avg_sales AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_avg_sales,
+        month_4_users_recurr_month_7_perc AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_perc,
+        month_4_recurr_month_7_avg_sales AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_avg_sales,
+        month_4_users_recurr_month_8_perc AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_perc,
+        month_4_recurr_month_8_avg_sales AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_avg_sales,
+        month_4_users_recurr_month_9_perc AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_perc,
+        month_4_recurr_month_9_avg_sales AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_avg_sales,
+        month_4_users_recurr_month_10_perc AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_perc,
+        month_4_recurr_month_10_avg_sales AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_avg_sales,
+        month_4_users_recurr_month_11_perc AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_perc,
+        month_4_recurr_month_11_avg_sales AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_avg_sales,
+        month_4_users_recurr_month_12_perc AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_perc,
+        month_4_recurr_month_12_avg_sales AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_avg_sales,
+        month_4_total_avg_sales AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_total_avg_sales,
+        month_4_total_return_users_perc AS ${dates_map.get(&#x27;month_4&#x27;).month}_${dates_map.get(&#x27;month_4&#x27;).date.slice(0, 4)}_total_return_users_perc,
+        month_5_ntb_conv AS ${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_ntb_conv,
+        month_5_ntb_avg_sales AS ${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_ntb_avg_sales,
+        month_5_users_recurr_month_6_perc AS ${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_perc,
+        month_5_recurr_month_6_avg_sales AS ${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_avg_sales,
+        month_5_users_recurr_month_7_perc AS ${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_perc,
+        month_5_recurr_month_7_avg_sales AS ${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_avg_sales,
+        month_5_users_recurr_month_8_perc AS ${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_perc,
+        month_5_recurr_month_8_avg_sales AS ${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_avg_sales,
+        month_5_users_recurr_month_9_perc AS ${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_perc,
+        month_5_recurr_month_9_avg_sales AS ${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_avg_sales,
+        month_5_users_recurr_month_10_perc AS ${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_perc,
+        month_5_recurr_month_10_avg_sales AS ${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_avg_sales,
+        month_5_users_recurr_month_11_perc AS ${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_perc,
+        month_5_recurr_month_11_avg_sales AS ${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_avg_sales,
+        month_5_users_recurr_month_12_perc AS ${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_perc,
+        month_5_recurr_month_12_avg_sales AS ${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_avg_sales,
+        month_5_total_avg_sales AS ${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_total_avg_sales,
+        month_5_total_return_users_perc AS ${dates_map.get(&#x27;month_5&#x27;).month}_${dates_map.get(&#x27;month_5&#x27;).date.slice(0, 4)}_total_return_users_perc
+        FROM 
+        final_data
+        GROUP BY
+        1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114&#x60;;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/amc/automated/queries/LifetimeValue_Sem_2.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LTV_Sem_2"></a>
+                    <span class="name">
+                        <span ><b>LTV_Sem_2</b></span>
+                        <a href="#LTV_Sem_2"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(dates_map: Map&lt;string, IYearMapItem&gt;) &#x3D;&gt; {
+  return &#x60;WITH ntb_data AS (
+    SELECT
+    advertiser,
+    campaign,
+    COUNT(DISTINCT user_id) AS total_ntb_users,
+    COUNT(DISTINCT conversion_event_dt) AS total_ntb_conversions,
+    SUM(month_1) AS month_1_ntb_conv,
+    SUM(month_1_ntb_sales) AS month_1_ntb_sales,
+    SUM(month_2) AS month_2_ntb_conv,
+    SUM(month_2_ntb_sales) AS month_2_ntb_sales,
+    SUM(month_3) AS month_3_ntb_conv,
+    SUM(month_3_ntb_sales) AS month_3_ntb_sales,
+    SUM(month_4) AS month_4_ntb_conv,
+    SUM(month_4_ntb_sales) AS month_4_ntb_sales,
+    SUM(month_5) AS month_5_ntb_conv,
+    SUM(month_5_ntb_sales) AS month_5_ntb_sales,
+    SUM(month_6) AS month_6_ntb_conv,
+    SUM(month_6_ntb_sales) AS month_6_ntb_sales,
+    SUM(month_7) AS month_7_ntb_conv,
+    SUM(month_7_ntb_sales) AS month_7_ntb_sales,
+    SUM(month_8) AS month_8_ntb_conv,
+    SUM(month_8_ntb_sales) AS month_8_ntb_sales,
+    SUM(month_9) AS month_9_ntb_conv,
+    SUM(month_9_ntb_sales) AS month_9_ntb_sales,
+    SUM(month_10) AS month_10_ntb_conv,
+    SUM(month_10_ntb_sales) AS month_10_ntb_sales,
+    SUM(month_11) AS month_11_ntb_conv,
+    SUM(month_11_ntb_sales) AS month_11_ntb_sales,
+    SUM(month_12) AS month_12_ntb_conv,
+    SUM(month_12_ntb_sales) AS month_12_ntb_sales
+    FROM (
+    SELECT
+    advertiser,
+    campaign,
+    MAX(conversion_event_dt) AS conversion_event_dt,
+    new_to_brand_total_product_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_1&#x27;).date}-01&#x27;, 1, 0) AS month_1,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_1&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_1_ntb_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;, 1, 0) AS month_2,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_2_ntb_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_3&#x27;).date}-01&#x27;, 1, 0) AS month_3,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_3&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_3_ntb_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_4&#x27;).date}-01&#x27;, 1, 0) AS month_4,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_4&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_4_ntb_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_5&#x27;).date}-01&#x27;, 1, 0) AS month_5,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_5&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_5_ntb_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_6&#x27;).date}-01&#x27;, 1, 0) AS month_6,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_6&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_6_ntb_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_7&#x27;).date}-01&#x27;, 1, 0) AS month_7,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_7&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_7_ntb_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_8&#x27;).date}-01&#x27;, 1, 0) AS month_8,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_8&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_8_ntb_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_9&#x27;).date}-01&#x27;, 1, 0) AS month_9,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_9&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_9_ntb_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_10&#x27;).date}-01&#x27;, 1, 0) AS month_10,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_10&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_10_ntb_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_11&#x27;).date}-01&#x27;, 1, 0) AS month_11,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_11&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_11_ntb_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_12&#x27;).date}-01&#x27;, 1, 0) AS month_12,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_12&#x27;).date}-01&#x27;, new_to_brand_total_product_sales, 0) AS month_12_ntb_sales,
+    user_id
+    FROM
+    amazon_attributed_events_by_conversion_time
+    WHERE
+    purchases &gt; 0
+    AND new_to_brand &#x3D; TRUE
+    GROUP BY
+    advertiser,
+    campaign,
+    user_id,
+    new_to_brand_total_product_sales
+    )
+    GROUP BY
+    advertiser,
+    campaign
+    ),
+    ntb_users AS (
+    SELECT
+    campaign,
+    user_id,
+    MAX(conversion_event_dt) AS conversion_event_dt
+    FROM
+    amazon_attributed_events_by_conversion_time
+    WHERE
+    purchases &gt; 0
+    AND new_to_brand &#x3D; TRUE
+    GROUP BY
+    campaign,
+    user_id
+    ),
+    non_ntb_rest_months AS(
+    SELECT 
+    campaign,
+    MAX(conversion_event_dt) AS conversion_event_dt,
+    total_product_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;,1,0) AS month_2,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;,total_product_sales,0) AS month_2_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_3&#x27;).date}-01&#x27;,1,0) AS month_3,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_3&#x27;).date}-01&#x27;,total_product_sales,0) AS month_3_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_4&#x27;).date}-01&#x27;,1,0) AS month_4,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_4&#x27;).date}-01&#x27;,total_product_sales,0) AS month_4_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_5&#x27;).date}-01&#x27;,1,0) AS month_5,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_5&#x27;).date}-01&#x27;,total_product_sales,0) AS month_5_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_6&#x27;).date}-01&#x27;,1,0) AS month_6,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_6&#x27;).date}-01&#x27;,total_product_sales,0) AS month_6_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_7&#x27;).date}-01&#x27;,1,0) AS month_7,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_7&#x27;).date}-01&#x27;,total_product_sales,0) AS month_7_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_8&#x27;).date}-01&#x27;,1,0) AS month_8,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_8&#x27;).date}-01&#x27;,total_product_sales,0) AS month_8_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_9&#x27;).date}-01&#x27;,1,0) AS month_9,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_9&#x27;).date}-01&#x27;,total_product_sales,0) AS month_9_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_10&#x27;).date}-01&#x27;,1,0) AS month_10,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_10&#x27;).date}-01&#x27;,total_product_sales,0) AS month_10_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_11&#x27;).date}-01&#x27;,1,0) AS month_11,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_11&#x27;).date}-01&#x27;,total_product_sales,0) AS month_11_sales,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_12&#x27;).date}-01&#x27;,1,0) AS month_12,
+    IF(DATE_TRUNC(&#x27;month&#x27;, MAX(conversion_event_dt)) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_12&#x27;).date}-01&#x27;,total_product_sales,0) AS month_12_sales,
+    user_id
+    FROM 
+    amazon_attributed_events_by_conversion_time
+    WHERE
+    purchases &gt; 0
+    AND new_to_brand &#x3D; FALSE
+    GROUP BY
+    campaign,
+    user_id,
+    total_product_sales
+    ),
+    month_6_recurr AS (
+    SELECT 
+    ntb.campaign,
+    SUM(month_7) AS month_6_users_recurr_month_7,
+    SUM(month_7_sales) AS month_6_recurr_month_7_sales,
+    SUM(month_8) AS month_6_users_recurr_month_8,
+    SUM(month_8_sales) AS month_6_recurr_month_8_sales,
+    SUM(month_9) AS month_6_users_recurr_month_9,
+    SUM(month_9_sales) AS month_6_recurr_month_9_sales,
+    SUM(month_10) AS month_6_users_recurr_month_10,
+    SUM(month_10_sales) AS month_6_recurr_month_10_sales,
+    SUM(month_11) AS month_6_users_recurr_month_11,
+    SUM(month_11_sales) AS month_6_recurr_month_11_sales,
+    SUM(month_12) AS month_6_users_recurr_month_12,
+    SUM(month_12_sales) AS month_6_recurr_month_12_sales,
+    COUNT(DISTINCT(ntb.user_id)) month_6_total_return_users
+    FROM ntb_users ntb
+    JOIN non_ntb_rest_months non
+    ON ntb.user_id &#x3D; non.user_id
+    AND DATE_TRUNC(&#x27;month&#x27;, ntb.conversion_event_dt) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_6&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_1&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_3&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_4&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_5&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_6&#x27;).date}-01&#x27;
+    GROUP BY
+    campaign
+    HAVING COUNT(DISTINCT(non.user_id))&gt;1
+    ),
+    month_6_data AS (
+    SELECT 
+    prev_data.advertiser,
+    prev_data.campaign,
+    prev_data.total_ntb_users,
+    prev_data.total_ntb_conversions,
+    prev_data.month_6_ntb_conv,
+    prev_data.month_6_ntb_sales,
+    recur.month_6_users_recurr_month_7,
+    recur.month_6_recurr_month_7_sales,
+    recur.month_6_users_recurr_month_8,
+    recur.month_6_recurr_month_8_sales,
+    recur.month_6_users_recurr_month_9,
+    recur.month_6_recurr_month_9_sales,
+    recur.month_6_users_recurr_month_10,
+    recur.month_6_recurr_month_10_sales,
+    recur.month_6_users_recurr_month_11,
+    recur.month_6_recurr_month_11_sales,
+    recur.month_6_users_recurr_month_12,
+    recur.month_6_recurr_month_12_sales,
+    recur.month_6_total_return_users,
+    prev_data.month_7_ntb_conv,
+    prev_data.month_7_ntb_sales,
+    prev_data.month_8_ntb_conv,
+    prev_data.month_8_ntb_sales,
+    prev_data.month_9_ntb_conv,
+    prev_data.month_9_ntb_sales,
+    prev_data.month_10_ntb_conv,
+    prev_data.month_10_ntb_sales,
+    prev_data.month_11_ntb_conv,
+    prev_data.month_11_ntb_sales,
+    prev_data.month_12_ntb_conv,
+    prev_data.month_12_ntb_sales
+    FROM
+    ntb_data prev_data
+    LEFT JOIN
+    month_6_recurr recur
+    ON prev_data.campaign &#x3D; recur.campaign
+    GROUP BY
+    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+    ),
+    month_7_recurr AS (
+    SELECT 
+    ntb.campaign,
+    SUM(month_8) AS month_7_users_recurr_month_8,
+    SUM(month_8_sales) AS month_7_recurr_month_8_sales,
+    SUM(month_9) AS month_7_users_recurr_month_9,
+    SUM(month_9_sales) AS month_7_recurr_month_9_sales,
+    SUM(month_10) AS month_7_users_recurr_month_10,
+    SUM(month_10_sales) AS month_7_recurr_month_10_sales,
+    SUM(month_11) AS month_7_users_recurr_month_11,
+    SUM(month_11_sales) AS month_7_recurr_month_11_sales,
+    SUM(month_12) AS month_7_users_recurr_month_12,
+    SUM(month_12_sales) AS month_7_recurr_month_12_sales,
+    COUNT(DISTINCT(ntb.user_id)) month_7_total_return_users
+    FROM ntb_users ntb
+    JOIN non_ntb_rest_months non
+    ON ntb.user_id &#x3D; non.user_id
+    AND DATE_TRUNC(&#x27;month&#x27;, ntb.conversion_event_dt) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_7&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_1&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_3&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_4&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_5&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_6&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_7&#x27;).date}-01&#x27;
+    GROUP BY
+    campaign
+    HAVING COUNT(DISTINCT(non.user_id))&gt;1
+    ),
+    month_7_data AS (
+    SELECT 
+    prev_data.advertiser,
+    prev_data.campaign,
+    prev_data.total_ntb_users,
+    prev_data.total_ntb_conversions,
+    prev_data.month_6_ntb_conv,
+    prev_data.month_6_ntb_sales,
+    prev_data.month_6_users_recurr_month_7,
+    prev_data.month_6_recurr_month_7_sales,
+    prev_data.month_6_users_recurr_month_8,
+    prev_data.month_6_recurr_month_8_sales,
+    prev_data.month_6_users_recurr_month_9,
+    prev_data.month_6_recurr_month_9_sales,
+    prev_data.month_6_users_recurr_month_10,
+    prev_data.month_6_recurr_month_10_sales,
+    prev_data.month_6_users_recurr_month_11,
+    prev_data.month_6_recurr_month_11_sales,
+    prev_data.month_6_users_recurr_month_12,
+    prev_data.month_6_recurr_month_12_sales,
+    prev_data.month_6_total_return_users,
+    prev_data.month_7_ntb_conv,
+    prev_data.month_7_ntb_sales,
+    recur.month_7_users_recurr_month_8,
+    recur.month_7_recurr_month_8_sales,
+    recur.month_7_users_recurr_month_9,
+    recur.month_7_recurr_month_9_sales,
+    recur.month_7_users_recurr_month_10,
+    recur.month_7_recurr_month_10_sales,
+    recur.month_7_users_recurr_month_11,
+    recur.month_7_recurr_month_11_sales,
+    recur.month_7_users_recurr_month_12,
+    recur.month_7_recurr_month_12_sales,
+    recur.month_7_total_return_users,
+    prev_data.month_8_ntb_conv,
+    prev_data.month_8_ntb_sales,
+    prev_data.month_9_ntb_conv,
+    prev_data.month_9_ntb_sales,
+    prev_data.month_10_ntb_conv,
+    prev_data.month_10_ntb_sales,
+    prev_data.month_11_ntb_conv,
+    prev_data.month_11_ntb_sales,
+    prev_data.month_12_ntb_conv,
+    prev_data.month_12_ntb_sales
+    FROM
+    month_6_data prev_data
+    LEFT JOIN
+    month_7_recurr recur
+    ON prev_data.campaign &#x3D; recur.campaign
+    GROUP BY
+    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42
+    ),
+    month_8_recurr AS (
+    SELECT 
+    ntb.campaign,
+    SUM(month_9) AS month_8_users_recurr_month_9,
+    SUM(month_9_sales) AS month_8_recurr_month_9_sales,
+    SUM(month_10) AS month_8_users_recurr_month_10,
+    SUM(month_10_sales) AS month_8_recurr_month_10_sales,
+    SUM(month_11) AS month_8_users_recurr_month_11,
+    SUM(month_11_sales) AS month_8_recurr_month_11_sales,
+    SUM(month_12) AS month_8_users_recurr_month_12,
+    SUM(month_12_sales) AS month_8_recurr_month_12_sales,
+    COUNT(DISTINCT(ntb.user_id)) month_8_total_return_users
+    FROM ntb_users ntb
+    JOIN non_ntb_rest_months non
+    ON ntb.user_id &#x3D; non.user_id
+    AND DATE_TRUNC(&#x27;month&#x27;, ntb.conversion_event_dt) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_8&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_1&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_3&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_4&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_5&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_6&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_7&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_8&#x27;).date}-01&#x27;
+    GROUP BY
+    campaign
+    HAVING COUNT(DISTINCT(non.user_id))&gt;1
+    ),
+    month_8_data AS (
+    SELECT 
+    prev_data.advertiser,
+    prev_data.campaign,
+    prev_data.total_ntb_users,
+    prev_data.total_ntb_conversions,
+    prev_data.month_6_ntb_conv,
+    prev_data.month_6_ntb_sales,
+    prev_data.month_6_users_recurr_month_7,
+    prev_data.month_6_recurr_month_7_sales,
+    prev_data.month_6_users_recurr_month_8,
+    prev_data.month_6_recurr_month_8_sales,
+    prev_data.month_6_users_recurr_month_9,
+    prev_data.month_6_recurr_month_9_sales,
+    prev_data.month_6_users_recurr_month_10,
+    prev_data.month_6_recurr_month_10_sales,
+    prev_data.month_6_users_recurr_month_11,
+    prev_data.month_6_recurr_month_11_sales,
+    prev_data.month_6_users_recurr_month_12,
+    prev_data.month_6_recurr_month_12_sales,
+    prev_data.month_6_total_return_users,
+    prev_data.month_7_ntb_conv,
+    prev_data.month_7_ntb_sales,
+    prev_data.month_7_users_recurr_month_8,
+    prev_data.month_7_recurr_month_8_sales,
+    prev_data.month_7_users_recurr_month_9,
+    prev_data.month_7_recurr_month_9_sales,
+    prev_data.month_7_users_recurr_month_10,
+    prev_data.month_7_recurr_month_10_sales,
+    prev_data.month_7_users_recurr_month_11,
+    prev_data.month_7_recurr_month_11_sales,
+    prev_data.month_7_users_recurr_month_12,
+    prev_data.month_7_recurr_month_12_sales,
+    prev_data.month_7_total_return_users,
+    prev_data.month_8_ntb_conv,
+    prev_data.month_8_ntb_sales,
+    recur.month_8_users_recurr_month_9,
+    recur.month_8_recurr_month_9_sales,
+    recur.month_8_users_recurr_month_10,
+    recur.month_8_recurr_month_10_sales,
+    recur.month_8_users_recurr_month_11,
+    recur.month_8_recurr_month_11_sales,
+    recur.month_8_users_recurr_month_12,
+    recur.month_8_recurr_month_12_sales,
+    recur.month_8_total_return_users,
+    prev_data.month_9_ntb_conv,
+    prev_data.month_9_ntb_sales,
+    prev_data.month_10_ntb_conv,
+    prev_data.month_10_ntb_sales,
+    prev_data.month_11_ntb_conv,
+    prev_data.month_11_ntb_sales,
+    prev_data.month_12_ntb_conv,
+    prev_data.month_12_ntb_sales
+    FROM
+    month_7_data prev_data
+    LEFT JOIN
+    month_8_recurr recur
+    ON prev_data.campaign &#x3D; recur.campaign
+    GROUP BY
+    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51
+    ),
+    month_9_recurr AS (
+    SELECT 
+    ntb.campaign,
+    SUM(month_10) AS month_9_users_recurr_month_10,
+    SUM(month_10_sales) AS month_9_recurr_month_10_sales,
+    SUM(month_11) AS month_9_users_recurr_month_11,
+    SUM(month_11_sales) AS month_9_recurr_month_11_sales,
+    SUM(month_12) AS month_9_users_recurr_month_12,
+    SUM(month_12_sales) AS month_9_recurr_month_12_sales,
+    COUNT(DISTINCT(ntb.user_id)) month_9_total_return_users
+    FROM ntb_users ntb
+    JOIN non_ntb_rest_months non
+    ON ntb.user_id &#x3D; non.user_id
+    AND DATE_TRUNC(&#x27;month&#x27;, ntb.conversion_event_dt) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_9&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_1&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_3&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_4&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_5&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_6&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_7&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_8&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_9&#x27;).date}-01&#x27;
+    GROUP BY
+    campaign
+    HAVING COUNT(DISTINCT(non.user_id))&gt;1
+    ),
+    month_9_data AS (
+    SELECT 
+    prev_data.advertiser,
+    prev_data.campaign,
+    prev_data.total_ntb_users,
+    prev_data.total_ntb_conversions,
+    prev_data.month_6_ntb_conv,
+    prev_data.month_6_ntb_sales,
+    prev_data.month_6_users_recurr_month_7,
+    prev_data.month_6_recurr_month_7_sales,
+    prev_data.month_6_users_recurr_month_8,
+    prev_data.month_6_recurr_month_8_sales,
+    prev_data.month_6_users_recurr_month_9,
+    prev_data.month_6_recurr_month_9_sales,
+    prev_data.month_6_users_recurr_month_10,
+    prev_data.month_6_recurr_month_10_sales,
+    prev_data.month_6_users_recurr_month_11,
+    prev_data.month_6_recurr_month_11_sales,
+    prev_data.month_6_users_recurr_month_12,
+    prev_data.month_6_recurr_month_12_sales,
+    prev_data.month_6_total_return_users,
+    prev_data.month_7_ntb_conv,
+    prev_data.month_7_ntb_sales,
+    prev_data.month_7_users_recurr_month_8,
+    prev_data.month_7_recurr_month_8_sales,
+    prev_data.month_7_users_recurr_month_9,
+    prev_data.month_7_recurr_month_9_sales,
+    prev_data.month_7_users_recurr_month_10,
+    prev_data.month_7_recurr_month_10_sales,
+    prev_data.month_7_users_recurr_month_11,
+    prev_data.month_7_recurr_month_11_sales,
+    prev_data.month_7_users_recurr_month_12,
+    prev_data.month_7_recurr_month_12_sales,
+    prev_data.month_7_total_return_users,
+    prev_data.month_8_ntb_conv,
+    prev_data.month_8_ntb_sales,
+    prev_data.month_8_users_recurr_month_9,
+    prev_data.month_8_recurr_month_9_sales,
+    prev_data.month_8_users_recurr_month_10,
+    prev_data.month_8_recurr_month_10_sales,
+    prev_data.month_8_users_recurr_month_11,
+    prev_data.month_8_recurr_month_11_sales,
+    prev_data.month_8_users_recurr_month_12,
+    prev_data.month_8_recurr_month_12_sales,
+    prev_data.month_8_total_return_users,
+    prev_data.month_9_ntb_conv,
+    prev_data.month_9_ntb_sales,
+    recur.month_9_users_recurr_month_10,
+    recur.month_9_recurr_month_10_sales,
+    recur.month_9_users_recurr_month_11,
+    recur.month_9_recurr_month_11_sales,
+    recur.month_9_users_recurr_month_12,
+    recur.month_9_recurr_month_12_sales,
+    recur.month_9_total_return_users,
+    prev_data.month_10_ntb_conv,
+    prev_data.month_10_ntb_sales,
+    prev_data.month_11_ntb_conv,
+    prev_data.month_11_ntb_sales,
+    prev_data.month_12_ntb_conv,
+    prev_data.month_12_ntb_sales
+    FROM
+    month_8_data prev_data
+    LEFT JOIN
+    month_9_recurr recur
+    ON prev_data.campaign &#x3D; recur.campaign
+    GROUP BY
+    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58
+    ),
+    month_10_recurr AS (
+    SELECT 
+    ntb.campaign,
+    SUM(month_11) AS month_10_users_recurr_month_11,
+    SUM(month_11_sales) AS month_10_recurr_month_11_sales,
+    SUM(month_12) AS month_10_users_recurr_month_12,
+    SUM(month_12_sales) AS month_10_recurr_month_12_sales,
+    COUNT(DISTINCT(ntb.user_id)) month_10_total_return_users
+    FROM ntb_users ntb
+    JOIN non_ntb_rest_months non
+    ON ntb.user_id &#x3D; non.user_id
+    AND DATE_TRUNC(&#x27;month&#x27;, ntb.conversion_event_dt) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_10&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_1&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_3&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_4&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_5&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_6&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_7&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_8&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_9&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_10&#x27;).date}-01&#x27;
+    GROUP BY
+    campaign
+    HAVING COUNT(DISTINCT(non.user_id))&gt;1
+    ),
+    month_10_data AS (
+    SELECT 
+    prev_data.advertiser,
+    prev_data.campaign,
+    prev_data.total_ntb_users,
+    prev_data.total_ntb_conversions,
+    prev_data.month_6_ntb_conv,
+    prev_data.month_6_ntb_sales,
+    prev_data.month_6_users_recurr_month_7,
+    prev_data.month_6_recurr_month_7_sales,
+    prev_data.month_6_users_recurr_month_8,
+    prev_data.month_6_recurr_month_8_sales,
+    prev_data.month_6_users_recurr_month_9,
+    prev_data.month_6_recurr_month_9_sales,
+    prev_data.month_6_users_recurr_month_10,
+    prev_data.month_6_recurr_month_10_sales,
+    prev_data.month_6_users_recurr_month_11,
+    prev_data.month_6_recurr_month_11_sales,
+    prev_data.month_6_users_recurr_month_12,
+    prev_data.month_6_recurr_month_12_sales,
+    prev_data.month_6_total_return_users,
+    prev_data.month_7_ntb_conv,
+    prev_data.month_7_ntb_sales,
+    prev_data.month_7_users_recurr_month_8,
+    prev_data.month_7_recurr_month_8_sales,
+    prev_data.month_7_users_recurr_month_9,
+    prev_data.month_7_recurr_month_9_sales,
+    prev_data.month_7_users_recurr_month_10,
+    prev_data.month_7_recurr_month_10_sales,
+    prev_data.month_7_users_recurr_month_11,
+    prev_data.month_7_recurr_month_11_sales,
+    prev_data.month_7_users_recurr_month_12,
+    prev_data.month_7_recurr_month_12_sales,
+    prev_data.month_7_total_return_users,
+    prev_data.month_8_ntb_conv,
+    prev_data.month_8_ntb_sales,
+    prev_data.month_8_users_recurr_month_9,
+    prev_data.month_8_recurr_month_9_sales,
+    prev_data.month_8_users_recurr_month_10,
+    prev_data.month_8_recurr_month_10_sales,
+    prev_data.month_8_users_recurr_month_11,
+    prev_data.month_8_recurr_month_11_sales,
+    prev_data.month_8_users_recurr_month_12,
+    prev_data.month_8_recurr_month_12_sales,
+    prev_data.month_8_total_return_users,
+    prev_data.month_9_ntb_conv,
+    prev_data.month_9_ntb_sales,
+    prev_data.month_9_users_recurr_month_10,
+    prev_data.month_9_recurr_month_10_sales,
+    prev_data.month_9_users_recurr_month_11,
+    prev_data.month_9_recurr_month_11_sales,
+    prev_data.month_9_users_recurr_month_12,
+    prev_data.month_9_recurr_month_12_sales,
+    prev_data.month_9_total_return_users,
+    prev_data.month_10_ntb_conv,
+    prev_data.month_10_ntb_sales,
+    recur.month_10_users_recurr_month_11,
+    recur.month_10_recurr_month_11_sales,
+    recur.month_10_users_recurr_month_12,
+    recur.month_10_recurr_month_12_sales,
+    recur.month_10_total_return_users,
+    prev_data.month_11_ntb_conv,
+    prev_data.month_11_ntb_sales,
+    prev_data.month_12_ntb_conv,
+    prev_data.month_12_ntb_sales
+    FROM
+    month_9_data prev_data
+    LEFT JOIN
+    month_10_recurr recur
+    ON prev_data.campaign &#x3D; recur.campaign
+    GROUP BY
+    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63
+    ),
+    month_11_recurr AS (
+    SELECT 
+    ntb.campaign,
+    SUM(month_12) AS month_11_users_recurr_month_12,
+    SUM(month_12_sales) AS month_11_recurr_month_12_sales,
+    COUNT(DISTINCT(ntb.user_id)) month_11_total_return_users
+    FROM ntb_users ntb
+    JOIN non_ntb_rest_months non
+    ON ntb.user_id &#x3D; non.user_id
+    AND DATE_TRUNC(&#x27;month&#x27;, ntb.conversion_event_dt) SIMILAR TO &#x27;^${dates_map.get(&#x27;month_11&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_1&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_2&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_3&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_4&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_5&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_6&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_7&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_8&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_9&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_10&#x27;).date}-01&#x27;
+    AND DATE_TRUNC(&#x27;month&#x27;, non.conversion_event_dt) NOT SIMILAR TO &#x27;^${dates_map.get(&#x27;month_11&#x27;).date}-01&#x27;
+    GROUP BY
+    campaign
+    HAVING COUNT(DISTINCT(non.user_id))&gt;1
+    ),
+    preliminar_data AS (
+    SELECT 
+    prev_data.advertiser,
+    prev_data.campaign,
+    prev_data.total_ntb_users,
+    prev_data.total_ntb_conversions,
+    prev_data.month_6_ntb_conv,
+    prev_data.month_6_ntb_sales,
+    IF(prev_data.month_6_ntb_conv&gt;0, prev_data.month_6_users_recurr_month_7, 0) AS month_6_users_recurr_month_7,
+    IF(prev_data.month_6_ntb_conv&gt;0, prev_data.month_6_recurr_month_7_sales, 0) AS month_6_recurr_month_7_sales,
+    IF(prev_data.month_6_ntb_conv&gt;0, prev_data.month_6_users_recurr_month_8, 0) AS month_6_users_recurr_month_8,
+    IF(prev_data.month_6_ntb_conv&gt;0, prev_data.month_6_recurr_month_8_sales, 0) AS month_6_recurr_month_8_sales,
+    IF(prev_data.month_6_ntb_conv&gt;0, prev_data.month_6_users_recurr_month_9, 0) AS month_6_users_recurr_month_9,
+    IF(prev_data.month_6_ntb_conv&gt;0, prev_data.month_6_recurr_month_9_sales, 0) AS month_6_recurr_month_9_sales,
+    IF(prev_data.month_6_ntb_conv&gt;0, prev_data.month_6_users_recurr_month_10, 0) AS month_6_users_recurr_month_10,
+    IF(prev_data.month_6_ntb_conv&gt;0, prev_data.month_6_recurr_month_10_sales, 0) AS month_6_recurr_month_10_sales,
+    IF(prev_data.month_6_ntb_conv&gt;0, prev_data.month_6_users_recurr_month_11, 0) AS month_6_users_recurr_month_11,
+    IF(prev_data.month_6_ntb_conv&gt;0, prev_data.month_6_recurr_month_11_sales, 0) AS month_6_recurr_month_11_sales,
+    IF(prev_data.month_6_ntb_conv&gt;0, prev_data.month_6_users_recurr_month_12, 0) AS month_6_users_recurr_month_12,
+    IF(prev_data.month_6_ntb_conv&gt;0, prev_data.month_6_recurr_month_12_sales, 0) AS month_6_recurr_month_12_sales,
+    IF(prev_data.month_6_ntb_conv&gt;0, prev_data.month_6_total_return_users, 0) AS month_6_total_return_users,
+    prev_data.month_7_ntb_conv,
+    prev_data.month_7_ntb_sales,
+    IF(prev_data.month_7_ntb_conv&gt;0, prev_data.month_7_users_recurr_month_8, 0) AS month_7_users_recurr_month_8,
+    IF(prev_data.month_7_ntb_conv&gt;0, prev_data.month_7_recurr_month_8_sales, 0) AS month_7_recurr_month_8_sales,
+    IF(prev_data.month_7_ntb_conv&gt;0, prev_data.month_7_users_recurr_month_9, 0) AS month_7_users_recurr_month_9,
+    IF(prev_data.month_7_ntb_conv&gt;0, prev_data.month_7_recurr_month_9_sales, 0) AS month_7_recurr_month_9_sales,
+    IF(prev_data.month_7_ntb_conv&gt;0, prev_data.month_7_users_recurr_month_10, 0) AS month_7_users_recurr_month_10,
+    IF(prev_data.month_7_ntb_conv&gt;0, prev_data.month_7_recurr_month_10_sales, 0) AS month_7_recurr_month_10_sales,
+    IF(prev_data.month_7_ntb_conv&gt;0, prev_data.month_7_users_recurr_month_11, 0) AS month_7_users_recurr_month_11,
+    IF(prev_data.month_7_ntb_conv&gt;0, prev_data.month_7_recurr_month_11_sales, 0) AS month_7_recurr_month_11_sales,
+    IF(prev_data.month_7_ntb_conv&gt;0, prev_data.month_7_users_recurr_month_12, 0) AS month_7_users_recurr_month_12,
+    IF(prev_data.month_7_ntb_conv&gt;0, prev_data.month_7_recurr_month_12_sales, 0) AS month_7_recurr_month_12_sales,
+    IF(prev_data.month_7_ntb_conv&gt;0, prev_data.month_7_total_return_users, 0) AS month_7_total_return_users,
+    prev_data.month_8_ntb_conv,
+    prev_data.month_8_ntb_sales,
+    IF(prev_data.month_8_ntb_conv&gt;0, prev_data.month_8_users_recurr_month_9, 0) AS month_8_users_recurr_month_9,
+    IF(prev_data.month_8_ntb_conv&gt;0, prev_data.month_8_recurr_month_9_sales, 0) AS month_8_recurr_month_9_sales,
+    IF(prev_data.month_8_ntb_conv&gt;0, prev_data.month_8_users_recurr_month_10, 0) AS month_8_users_recurr_month_10,
+    IF(prev_data.month_8_ntb_conv&gt;0, prev_data.month_8_recurr_month_10_sales, 0) AS month_8_recurr_month_10_sales,
+    IF(prev_data.month_8_ntb_conv&gt;0, prev_data.month_8_users_recurr_month_11, 0) AS month_8_users_recurr_month_11,
+    IF(prev_data.month_8_ntb_conv&gt;0, prev_data.month_8_recurr_month_11_sales, 0) AS month_8_recurr_month_11_sales,
+    IF(prev_data.month_8_ntb_conv&gt;0, prev_data.month_8_users_recurr_month_12, 0) AS month_8_users_recurr_month_12,
+    IF(prev_data.month_8_ntb_conv&gt;0, prev_data.month_8_recurr_month_12_sales, 0) AS month_8_recurr_month_12_sales,
+    IF(prev_data.month_8_ntb_conv&gt;0, prev_data.month_8_total_return_users, 0) AS month_8_total_return_users,
+    prev_data.month_9_ntb_conv,
+    prev_data.month_9_ntb_sales,
+    IF(prev_data.month_9_ntb_conv&gt;0, prev_data.month_9_users_recurr_month_10, 0) AS month_9_users_recurr_month_10,
+    IF(prev_data.month_9_ntb_conv&gt;0, prev_data.month_9_recurr_month_10_sales, 0) AS month_9_recurr_month_10_sales,
+    IF(prev_data.month_9_ntb_conv&gt;0, prev_data.month_9_users_recurr_month_11, 0) AS month_9_users_recurr_month_11,
+    IF(prev_data.month_9_ntb_conv&gt;0, prev_data.month_9_recurr_month_11_sales, 0) AS month_9_recurr_month_11_sales,
+    IF(prev_data.month_9_ntb_conv&gt;0, prev_data.month_9_users_recurr_month_12, 0) AS month_9_users_recurr_month_12,
+    IF(prev_data.month_9_ntb_conv&gt;0, prev_data.month_9_recurr_month_12_sales, 0) AS month_9_recurr_month_12_sales,
+    IF(prev_data.month_9_ntb_conv&gt;0, prev_data.month_9_total_return_users, 0) AS month_9_total_return_users,
+    prev_data.month_10_ntb_conv,
+    prev_data.month_10_ntb_sales,
+    IF(prev_data.month_10_ntb_conv&gt;0, prev_data.month_10_users_recurr_month_11, 0) AS month_10_users_recurr_month_11,
+    IF(prev_data.month_10_ntb_conv&gt;0, prev_data.month_10_recurr_month_11_sales, 0) AS month_10_recurr_month_11_sales,
+    IF(prev_data.month_10_ntb_conv&gt;0, prev_data.month_10_users_recurr_month_12, 0) AS month_10_users_recurr_month_12,
+    IF(prev_data.month_10_ntb_conv&gt;0, prev_data.month_10_recurr_month_12_sales, 0) AS month_10_recurr_month_12_sales,
+    IF(prev_data.month_10_ntb_conv&gt;0, prev_data.month_10_total_return_users, 0) AS month_10_total_return_users,
+    prev_data.month_11_ntb_conv,
+    prev_data.month_11_ntb_sales,
+    IF(prev_data.month_11_ntb_conv&gt;0, recur.month_11_users_recurr_month_12, 0) AS month_11_users_recurr_month_12,
+    IF(prev_data.month_11_ntb_conv&gt;0, recur.month_11_recurr_month_12_sales, 0) AS month_11_recurr_month_12_sales,
+    IF(prev_data.month_11_ntb_conv&gt;0, recur.month_11_total_return_users, 0) AS month_11_total_return_users,
+    prev_data.month_12_ntb_conv,
+    prev_data.month_12_ntb_sales
+    FROM
+    month_10_data prev_data
+    LEFT JOIN
+    month_11_recurr recur
+    ON prev_data.campaign &#x3D; recur.campaign
+    GROUP BY
+    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66
+    ),
+    percentage_data AS (
+    SELECT 
+    advertiser,
+    campaign,
+    total_ntb_users,
+    total_ntb_conversions,
+    month_6_ntb_conv,
+    IF(month_6_ntb_sales&#x3D;0, 0, ROUND(month_6_ntb_sales/month_6_ntb_conv,1)) AS month_6_ntb_avg_sales,
+    IF(month_6_users_recurr_month_7 IS NULL OR month_6_users_recurr_month_7&#x3D;0, 0, ROUND((month_6_users_recurr_month_7*100)/month_6_ntb_conv,1)) AS month_6_users_recurr_month_7_perc,
+    IF(month_6_recurr_month_7_sales IS NULL OR month_6_recurr_month_7_sales&#x3D;0, 0, ROUND(month_6_recurr_month_7_sales/month_6_users_recurr_month_7,1)) AS month_6_recurr_month_7_avg_sales,
+    IF(month_6_users_recurr_month_8 IS NULL OR month_6_users_recurr_month_8&#x3D;0, 0, ROUND((month_6_users_recurr_month_8*100)/month_6_ntb_conv,1)) AS month_6_users_recurr_month_8_perc,
+    IF(month_6_recurr_month_8_sales IS NULL OR month_6_recurr_month_8_sales&#x3D;0, 0, ROUND(month_6_recurr_month_8_sales/month_6_users_recurr_month_8,1)) AS month_6_recurr_month_8_avg_sales,
+    IF(month_6_users_recurr_month_9 IS NULL OR month_6_users_recurr_month_9&#x3D;0, 0, ROUND((month_6_users_recurr_month_9*100)/month_6_ntb_conv,1)) AS month_6_users_recurr_month_9_perc,
+    IF(month_6_recurr_month_9_sales IS NULL OR month_6_recurr_month_9_sales&#x3D;0, 0, ROUND(month_6_recurr_month_9_sales/month_6_users_recurr_month_9,1)) AS month_6_recurr_month_9_avg_sales,
+    IF(month_6_users_recurr_month_10 IS NULL OR month_6_users_recurr_month_10&#x3D;0, 0, ROUND((month_6_users_recurr_month_10*100)/month_6_ntb_conv,1)) AS month_6_users_recurr_month_10_perc,
+    IF(month_6_recurr_month_10_sales IS NULL OR month_6_recurr_month_10_sales&#x3D;0, 0, ROUND(month_6_recurr_month_10_sales/month_6_users_recurr_month_10,1)) AS month_6_recurr_month_10_avg_sales,
+    IF(month_6_users_recurr_month_11 IS NULL OR month_6_users_recurr_month_11&#x3D;0, 0, ROUND((month_6_users_recurr_month_11*100)/month_6_ntb_conv,1)) AS month_6_users_recurr_month_11_perc,
+    IF(month_6_recurr_month_11_sales IS NULL OR month_6_recurr_month_11_sales&#x3D;0, 0, ROUND(month_6_recurr_month_11_sales/month_6_users_recurr_month_11,1)) AS month_6_recurr_month_11_avg_sales,
+    IF(month_6_users_recurr_month_12 IS NULL OR month_6_users_recurr_month_12&#x3D;0, 0, ROUND((month_6_users_recurr_month_12*100)/month_6_ntb_conv,1)) AS month_6_users_recurr_month_12_perc,
+    IF(month_6_recurr_month_12_sales IS NULL OR month_6_recurr_month_12_sales&#x3D;0, 0, ROUND(month_6_recurr_month_12_sales/month_6_users_recurr_month_12,1)) AS month_6_recurr_month_12_avg_sales,
+    IF(month_6_total_return_users IS NULL OR month_6_total_return_users&#x3D;0, 0, ROUND((month_6_total_return_users*100)/month_6_ntb_conv,1)) AS month_6_total_return_users_perc,
+    month_7_ntb_conv,
+    IF(month_7_ntb_sales&#x3D;0, 0, ROUND(month_7_ntb_sales/month_7_ntb_conv,1)) AS month_7_ntb_avg_sales,
+    IF(month_7_users_recurr_month_8 IS NULL OR month_7_users_recurr_month_8&#x3D;0, 0, ROUND((month_7_users_recurr_month_8*100)/month_7_ntb_conv,1)) AS month_7_users_recurr_month_8_perc,
+    IF(month_7_recurr_month_8_sales IS NULL OR month_7_recurr_month_8_sales&#x3D;0, 0, ROUND(month_7_recurr_month_8_sales/month_7_users_recurr_month_8,1)) AS month_7_recurr_month_8_avg_sales,
+    IF(month_7_users_recurr_month_9 IS NULL OR month_7_users_recurr_month_9&#x3D;0, 0, ROUND((month_7_users_recurr_month_9*100)/month_7_ntb_conv,1)) AS month_7_users_recurr_month_9_perc,
+    IF(month_7_recurr_month_9_sales IS NULL OR month_7_recurr_month_9_sales&#x3D;0, 0, ROUND(month_7_recurr_month_9_sales/month_7_users_recurr_month_9,1)) AS month_7_recurr_month_9_avg_sales,
+    IF(month_7_users_recurr_month_10 IS NULL OR month_7_users_recurr_month_10&#x3D;0, 0, ROUND((month_7_users_recurr_month_10*100)/month_7_ntb_conv,1)) AS month_7_users_recurr_month_10_perc,
+    IF(month_7_recurr_month_10_sales IS NULL OR month_7_recurr_month_10_sales&#x3D;0, 0, ROUND(month_7_recurr_month_10_sales/month_7_users_recurr_month_10,1)) AS month_7_recurr_month_10_avg_sales,
+    IF(month_7_users_recurr_month_11 IS NULL OR month_7_users_recurr_month_11&#x3D;0, 0, ROUND((month_7_users_recurr_month_11*100)/month_7_ntb_conv,1)) AS month_7_users_recurr_month_11_perc,
+    IF(month_7_recurr_month_11_sales IS NULL OR month_7_recurr_month_11_sales&#x3D;0, 0, ROUND(month_7_recurr_month_11_sales/month_7_users_recurr_month_11,1)) AS month_7_recurr_month_11_avg_sales,
+    IF(month_7_users_recurr_month_12 IS NULL OR month_7_users_recurr_month_12&#x3D;0, 0, ROUND((month_7_users_recurr_month_12*100)/month_7_ntb_conv,1)) AS month_7_users_recurr_month_12_perc,
+    IF(month_7_recurr_month_12_sales IS NULL OR month_7_recurr_month_12_sales&#x3D;0, 0, ROUND(month_7_recurr_month_12_sales/month_7_users_recurr_month_12,1)) AS month_7_recurr_month_12_avg_sales,
+    IF(month_7_total_return_users IS NULL OR month_7_total_return_users&#x3D;0, 0, ROUND((month_7_total_return_users*100)/month_7_ntb_conv,1)) AS month_7_total_return_users_perc,
+    month_8_ntb_conv,
+    IF(month_8_ntb_sales&#x3D;0, 0, ROUND(month_8_ntb_sales/month_8_ntb_conv,1)) AS month_8_ntb_avg_sales,
+    IF(month_8_users_recurr_month_9 IS NULL OR month_8_users_recurr_month_9&#x3D;0, 0, ROUND((month_8_users_recurr_month_9*100)/month_8_ntb_conv,1)) AS month_8_users_recurr_month_9_perc,
+    IF(month_8_recurr_month_9_sales IS NULL OR month_8_recurr_month_9_sales&#x3D;0, 0, ROUND(month_8_recurr_month_9_sales/month_8_users_recurr_month_9,1)) AS month_8_recurr_month_9_avg_sales,
+    IF(month_8_users_recurr_month_10 IS NULL OR month_8_users_recurr_month_10&#x3D;0, 0, ROUND((month_8_users_recurr_month_10*100)/month_8_ntb_conv,1)) AS month_8_users_recurr_month_10_perc,
+    IF(month_8_recurr_month_10_sales IS NULL OR month_8_recurr_month_10_sales&#x3D;0, 0, ROUND(month_8_recurr_month_10_sales/month_8_users_recurr_month_10,1)) AS month_8_recurr_month_10_avg_sales,
+    IF(month_8_users_recurr_month_11 IS NULL OR month_8_users_recurr_month_11&#x3D;0, 0, ROUND((month_8_users_recurr_month_11*100)/month_8_ntb_conv,1)) AS month_8_users_recurr_month_11_perc,
+    IF(month_8_recurr_month_11_sales IS NULL OR month_8_recurr_month_11_sales&#x3D;0, 0, ROUND(month_8_recurr_month_11_sales/month_8_users_recurr_month_11,1)) AS month_8_recurr_month_11_avg_sales,
+    IF(month_8_users_recurr_month_12 IS NULL OR month_8_users_recurr_month_12&#x3D;0, 0, ROUND((month_8_users_recurr_month_12*100)/month_8_ntb_conv,1)) AS month_8_users_recurr_month_12_perc,
+    IF(month_8_recurr_month_12_sales IS NULL OR month_8_recurr_month_12_sales&#x3D;0, 0, ROUND(month_8_recurr_month_12_sales/month_8_users_recurr_month_12,1)) AS month_8_recurr_month_12_avg_sales,
+    IF(month_8_total_return_users IS NULL OR month_8_total_return_users&#x3D;0, 0, ROUND((month_8_total_return_users*100)/month_8_ntb_conv,1)) AS month_8_total_return_users_perc,
+    month_9_ntb_conv,
+    IF(month_9_ntb_sales&#x3D;0, 0, ROUND(month_9_ntb_sales/month_9_ntb_conv,1)) AS month_9_ntb_avg_sales,
+    IF(month_9_users_recurr_month_10 IS NULL OR month_9_users_recurr_month_10&#x3D;0, 0, ROUND((month_9_users_recurr_month_10*100)/month_9_ntb_conv,1)) AS month_9_users_recurr_month_10_perc,
+    IF(month_9_recurr_month_10_sales IS NULL OR month_9_recurr_month_10_sales&#x3D;0, 0, ROUND(month_9_recurr_month_10_sales/month_9_users_recurr_month_10,1)) AS month_9_recurr_month_10_avg_sales,
+    IF(month_9_users_recurr_month_11 IS NULL OR month_9_users_recurr_month_11&#x3D;0, 0, ROUND((month_9_users_recurr_month_11*100)/month_9_ntb_conv,1)) AS month_9_users_recurr_month_11_perc,
+    IF(month_9_recurr_month_11_sales IS NULL OR month_9_recurr_month_11_sales&#x3D;0, 0, ROUND(month_9_recurr_month_11_sales/month_9_users_recurr_month_11,1)) AS month_9_recurr_month_11_avg_sales,
+    IF(month_9_users_recurr_month_12 IS NULL OR month_9_users_recurr_month_12&#x3D;0, 0, ROUND((month_9_users_recurr_month_12*100)/month_9_ntb_conv,1)) AS month_9_users_recurr_month_12_perc,
+    IF(month_9_recurr_month_12_sales IS NULL OR month_9_recurr_month_12_sales&#x3D;0, 0, ROUND(month_9_recurr_month_12_sales/month_9_users_recurr_month_12,1)) AS month_9_recurr_month_12_avg_sales,
+    IF(month_9_total_return_users IS NULL OR month_9_total_return_users&#x3D;0, 0, ROUND((month_9_total_return_users*100)/month_9_ntb_conv,1)) AS month_9_total_return_users_perc,
+    month_10_ntb_conv,
+    IF(month_10_ntb_sales&#x3D;0, 0, ROUND(month_10_ntb_sales/month_10_ntb_conv,1)) AS month_10_ntb_avg_sales,
+    IF(month_10_users_recurr_month_11 IS NULL OR month_10_users_recurr_month_11&#x3D;0, 0, ROUND((month_10_users_recurr_month_11*100)/month_10_ntb_conv,1)) AS month_10_users_recurr_month_11_perc,
+    IF(month_10_recurr_month_11_sales IS NULL OR month_10_recurr_month_11_sales&#x3D;0, 0, ROUND(month_10_recurr_month_11_sales/month_10_users_recurr_month_11,1)) AS month_10_recurr_month_11_avg_sales,
+    IF(month_10_users_recurr_month_12 IS NULL OR month_10_users_recurr_month_12&#x3D;0, 0, ROUND((month_10_users_recurr_month_12*100)/month_10_ntb_conv,1)) AS month_10_users_recurr_month_12_perc,
+    IF(month_10_recurr_month_12_sales IS NULL OR month_10_recurr_month_12_sales&#x3D;0, 0, ROUND(month_10_recurr_month_12_sales/month_10_users_recurr_month_12,1)) AS month_10_recurr_month_12_avg_sales,
+    IF(month_10_total_return_users IS NULL OR month_10_total_return_users&#x3D;0, 0, ROUND((month_10_total_return_users*100)/month_10_ntb_conv,1)) AS month_10_total_return_users_perc,
+    month_11_ntb_conv,
+    IF(month_11_ntb_sales&#x3D;0, 0, ROUND(month_11_ntb_sales/month_11_ntb_conv,1)) AS month_11_ntb_avg_sales,
+    IF(month_11_users_recurr_month_12 IS NULL OR month_11_users_recurr_month_12&#x3D;0, 0, ROUND((month_11_users_recurr_month_12*100)/month_11_ntb_conv,1)) AS month_11_users_recurr_month_12_perc,
+    IF(month_11_recurr_month_12_sales IS NULL OR month_11_recurr_month_12_sales&#x3D;0, 0, ROUND(month_11_recurr_month_12_sales/month_11_users_recurr_month_12,1)) AS month_11_recurr_month_12_avg_sales,
+    IF(month_11_total_return_users IS NULL OR month_11_total_return_users&#x3D;0, 0, ROUND((month_11_total_return_users*100)/month_11_ntb_conv,1)) AS month_11_total_return_users_perc,
+    month_12_ntb_conv,
+    IF(month_12_ntb_sales&#x3D;0, 0, ROUND(month_12_ntb_sales/month_12_ntb_conv,1)) AS month_12_ntb_avg_sales
+    FROM
+    preliminar_data
+    GROUP BY
+    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66
+    ),
+    final_data AS (
+    SELECT 
+    advertiser,
+    campaign,
+    total_ntb_users,
+    total_ntb_conversions,
+    month_6_ntb_conv,
+    month_6_ntb_avg_sales,
+    month_6_users_recurr_month_7_perc,
+    month_6_recurr_month_7_avg_sales,
+    month_6_users_recurr_month_8_perc,
+    month_6_recurr_month_8_avg_sales,
+    month_6_users_recurr_month_9_perc,
+    month_6_recurr_month_9_avg_sales,
+    month_6_users_recurr_month_10_perc,
+    month_6_recurr_month_10_avg_sales,
+    month_6_users_recurr_month_11_perc,
+    month_6_recurr_month_11_avg_sales,
+    month_6_users_recurr_month_12_perc,
+    month_6_recurr_month_12_avg_sales,
+    (month_6_ntb_avg_sales+month_6_recurr_month_7_avg_sales+month_6_recurr_month_8_avg_sales+month_6_recurr_month_9_avg_sales+month_6_recurr_month_10_avg_sales+month_6_recurr_month_11_avg_sales+month_6_recurr_month_12_avg_sales) AS month_6_total_avg_sales,
+    month_6_total_return_users_perc,
+    month_7_ntb_conv,
+    month_7_ntb_avg_sales,
+    month_7_users_recurr_month_8_perc,
+    month_7_recurr_month_8_avg_sales,
+    month_7_users_recurr_month_9_perc,
+    month_7_recurr_month_9_avg_sales,
+    month_7_users_recurr_month_10_perc,
+    month_7_recurr_month_10_avg_sales,
+    month_7_users_recurr_month_11_perc,
+    month_7_recurr_month_11_avg_sales,
+    month_7_users_recurr_month_12_perc,
+    month_7_recurr_month_12_avg_sales,
+    (month_7_ntb_avg_sales+month_7_recurr_month_8_avg_sales+month_7_recurr_month_9_avg_sales+month_7_recurr_month_10_avg_sales+month_7_recurr_month_11_avg_sales+month_7_recurr_month_12_avg_sales) AS month_7_total_avg_sales,
+    month_7_total_return_users_perc,
+    month_8_ntb_conv,
+    month_8_ntb_avg_sales,
+    month_8_users_recurr_month_9_perc,
+    month_8_recurr_month_9_avg_sales,
+    month_8_users_recurr_month_10_perc,
+    month_8_recurr_month_10_avg_sales,
+    month_8_users_recurr_month_11_perc,
+    month_8_recurr_month_11_avg_sales,
+    month_8_users_recurr_month_12_perc,
+    month_8_recurr_month_12_avg_sales,
+    (month_8_ntb_avg_sales+month_8_recurr_month_9_avg_sales+month_8_recurr_month_10_avg_sales+month_8_recurr_month_11_avg_sales+month_8_recurr_month_12_avg_sales) AS month_8_total_avg_sales,
+    month_8_total_return_users_perc,
+    month_9_ntb_conv,
+    month_9_ntb_avg_sales,
+    month_9_users_recurr_month_10_perc,
+    month_9_recurr_month_10_avg_sales,
+    month_9_users_recurr_month_11_perc,
+    month_9_recurr_month_11_avg_sales,
+    month_9_users_recurr_month_12_perc,
+    month_9_recurr_month_12_avg_sales,
+    (month_9_ntb_avg_sales+month_9_recurr_month_10_avg_sales+month_9_recurr_month_11_avg_sales+month_9_recurr_month_12_avg_sales) AS month_9_total_avg_sales,
+    month_9_total_return_users_perc,
+    month_10_ntb_conv,
+    month_10_ntb_avg_sales,
+    month_10_users_recurr_month_11_perc,
+    month_10_recurr_month_11_avg_sales,
+    month_10_users_recurr_month_12_perc,
+    month_10_recurr_month_12_avg_sales,
+    (month_10_ntb_avg_sales+month_10_recurr_month_11_avg_sales+month_10_recurr_month_12_avg_sales) AS month_10_total_avg_sales,
+    month_10_total_return_users_perc,
+    month_11_ntb_conv,
+    month_11_ntb_avg_sales,
+    month_11_users_recurr_month_12_perc,
+    month_11_recurr_month_12_avg_sales,
+    (month_11_ntb_avg_sales+month_11_recurr_month_12_avg_sales) AS month_11_total_avg_sales,
+    month_11_total_return_users_perc,
+    month_12_ntb_conv,
+    month_12_ntb_avg_sales,
+    (month_12_ntb_avg_sales) AS month_12_total_avg_sales
+    FROM 
+    percentage_data
+    GROUP BY
+    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73
+    )
+    SELECT
+    advertiser,
+    campaign,
+    total_ntb_users,
+    total_ntb_conversions,
+    month_6_ntb_conv AS ${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_ntb_conv,
+    month_6_ntb_avg_sales AS ${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_ntb_avg_sales,
+    month_6_users_recurr_month_7_perc AS ${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_perc,
+    month_6_recurr_month_7_avg_sales AS ${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_avg_sales,
+    month_6_users_recurr_month_8_perc AS ${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_perc,
+    month_6_recurr_month_8_avg_sales AS ${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_avg_sales,
+    month_6_users_recurr_month_9_perc AS ${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_perc,
+    month_6_recurr_month_9_avg_sales AS ${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_avg_sales,
+    month_6_users_recurr_month_10_perc AS ${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_perc,
+    month_6_recurr_month_10_avg_sales AS ${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_avg_sales,
+    month_6_users_recurr_month_11_perc AS ${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_perc,
+    month_6_recurr_month_11_avg_sales AS ${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_avg_sales,
+    month_6_users_recurr_month_12_perc AS ${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_perc,
+    month_6_recurr_month_12_avg_sales AS ${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_avg_sales,
+    month_6_total_avg_sales AS ${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_total_avg_sales,
+    month_6_total_return_users_perc AS ${dates_map.get(&#x27;month_6&#x27;).month}_${dates_map.get(&#x27;month_6&#x27;).date.slice(0, 4)}_total_return_users_perc,
+    month_7_ntb_conv AS ${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_ntb_conv,
+    month_7_ntb_avg_sales AS ${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_ntb_avg_sales,
+    month_7_users_recurr_month_8_perc AS ${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_perc,
+    month_7_recurr_month_8_avg_sales AS ${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_avg_sales,
+    month_7_users_recurr_month_9_perc AS ${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_perc,
+    month_7_recurr_month_9_avg_sales AS ${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_avg_sales,
+    month_7_users_recurr_month_10_perc AS ${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_perc,
+    month_7_recurr_month_10_avg_sales AS ${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_avg_sales,
+    month_7_users_recurr_month_11_perc AS ${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_perc,
+    month_7_recurr_month_11_avg_sales AS ${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_avg_sales,
+    month_7_users_recurr_month_12_perc AS ${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_perc,
+    month_7_recurr_month_12_avg_sales AS ${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_avg_sales,
+    month_7_total_avg_sales AS ${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_total_avg_sales,
+    month_7_total_return_users_perc AS ${dates_map.get(&#x27;month_7&#x27;).month}_${dates_map.get(&#x27;month_7&#x27;).date.slice(0, 4)}_total_return_users_perc,
+    month_8_ntb_conv AS ${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_ntb_conv,
+    month_8_ntb_avg_sales AS ${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_ntb_avg_sales,
+    month_8_users_recurr_month_9_perc AS ${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_perc,
+    month_8_recurr_month_9_avg_sales AS ${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_avg_sales,
+    month_8_users_recurr_month_10_perc AS ${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_perc,
+    month_8_recurr_month_10_avg_sales AS ${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_avg_sales,
+    month_8_users_recurr_month_11_perc AS ${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_perc,
+    month_8_recurr_month_11_avg_sales AS ${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_avg_sales,
+    month_8_users_recurr_month_12_perc AS ${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_perc,
+    month_8_recurr_month_12_avg_sales AS ${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_avg_sales,
+    month_8_total_avg_sales AS ${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_total_avg_sales,
+    month_8_total_return_users_perc AS ${dates_map.get(&#x27;month_8&#x27;).month}_${dates_map.get(&#x27;month_8&#x27;).date.slice(0, 4)}_total_return_users_perc,
+    month_9_ntb_conv AS ${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_ntb_conv,
+    month_9_ntb_avg_sales AS ${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_ntb_avg_sales,
+    month_9_users_recurr_month_10_perc AS ${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_perc,
+    month_9_recurr_month_10_avg_sales AS ${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_avg_sales,
+    month_9_users_recurr_month_11_perc AS ${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_perc,
+    month_9_recurr_month_11_avg_sales AS ${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_avg_sales,
+    month_9_users_recurr_month_12_perc AS ${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_perc,
+    month_9_recurr_month_12_avg_sales AS ${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_avg_sales,
+    month_9_total_avg_sales AS ${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_total_avg_sales,
+    month_9_total_return_users_perc AS ${dates_map.get(&#x27;month_9&#x27;).month}_${dates_map.get(&#x27;month_9&#x27;).date.slice(0, 4)}_total_return_users_perc,
+    month_10_ntb_conv AS ${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_ntb_conv,
+    month_10_ntb_avg_sales AS ${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_ntb_avg_sales,
+    month_10_users_recurr_month_11_perc AS ${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_perc,
+    month_10_recurr_month_11_avg_sales AS ${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_avg_sales,
+    month_10_users_recurr_month_12_perc AS ${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_perc,
+    month_10_recurr_month_12_avg_sales AS ${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_avg_sales,
+    month_10_total_avg_sales AS ${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_total_avg_sales,
+    month_10_total_return_users_perc AS ${dates_map.get(&#x27;month_10&#x27;).month}_${dates_map.get(&#x27;month_10&#x27;).date.slice(0, 4)}_total_return_users_perc,
+    month_11_ntb_conv AS ${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_ntb_conv,
+    month_11_ntb_avg_sales AS ${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_ntb_avg_sales,
+    month_11_users_recurr_month_12_perc AS ${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_users_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_perc,
+    month_11_recurr_month_12_avg_sales AS ${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_recurr_${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_avg_sales,
+    month_11_total_avg_sales AS ${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_total_avg_sales,
+    month_11_total_return_users_perc AS ${dates_map.get(&#x27;month_11&#x27;).month}_${dates_map.get(&#x27;month_11&#x27;).date.slice(0, 4)}_total_return_users_perc,
+    month_12_ntb_conv AS ${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_ntb_conv,
+    month_12_ntb_avg_sales AS ${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_ntb_avg_sales,
+    month_12_total_avg_sales AS ${dates_map.get(&#x27;month_12&#x27;).month}_${dates_map.get(&#x27;month_12&#x27;).date.slice(0, 4)}_total_avg_sales
+    FROM 
+    final_data
+    GROUP BY
+    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73&#x60;;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

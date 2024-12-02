@@ -1,0 +1,340 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>amc.integration-api documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="./" class="navbar-brand">amc.integration-api documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1>amc.integration_api</h1>
+<p>NestJS app developed to achieve a seamless integration between an AWS S3 bucket (previously linked to an AMC instance), the Amazon ADS/Amazon Marketing Cloud API´s and a client tool such as PowerBi.</p>
+<p>The purpose of this proyect is to grant a single access point from where one can execute project specific procedures without the need of accessing/using each service separately via a third party software.  </p>
+<h2>Features</h2>
+<ul>
+<li>Token generation and validation needed for using all functionalities inside the API.</li>
+<li>Content filtering and retrieval of an AWS S3 bucket. </li>
+<li>Automated custom reports generation. </li>
+<li>Access report´s related functionalities of the Amazon Ads/Amazon Marketing Cloud API´s without the need to manually handle their respective authorization methods.</li>
+</ul>
+<h2>Installation</h2>
+<p>This proyect requires <a href="https://nodejs.org/">Node.js</a> v14+ to run.</p>
+<p>Create a .env file inside the proyect´s folder to initialize the following variables using your own private data:</p>
+<blockquote>
+<p>Note: AWS parameters must be related to an S3 bucket linked to an AMC instance as well as to an IAM user with permissions to this bucket, ADS parameters must be related to an Amazon Ads developer account and an Advertising API approved client.</p>
+</blockquote>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">PORT = &lt;Port where to load and raise the application&gt;
+AWS_BUCKET_NAME = &lt;name of the S3 bucket&gt;
+AWS_BUCKET_REGION = &lt;region of the S3 bucket&gt;
+AWS_ACCESS_KEY = &lt;IAM user´s access key&gt;
+AWS_SECRET_KEY=  &lt;IAM user´s secret access key&gt;
+SECRET = &lt;Password of your choice used for signing/validating jsonwebtokens&gt;
+ADS_REFRESH_TOKEN = &lt;Refresh token generated from the Amazon Ads auth API&gt;
+ADS_CLIENT_ID =  &lt;Amazon Ads client id&gt;
+ADS_CLIENT_SECRET = &lt;Amazon Ads client secret&gt;
+ADS_AUTH_API = https://api.amazon.com
+ADS_AMC_API = https://advertising-api.amazon.com
+ADS_AMC_INSTANCE= &lt;AMC instance id&gt;</code></pre></div><p>Install the dependencies and start the server.</p>
+<ul>
+<li>Development Environment</li>
+</ul>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">npm install
+npm run start:dev </code></pre></div><ul>
+<li>Production Environment</li>
+</ul>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">npm run build
+npm run start:prod</code></pre></div><p>By default the app will run in port <a href="http://localhost:3000/">http://localhost:3000/</a>, so change this within the .env file if necessary.</p>
+<h2>Authorization</h2>
+<p>Every HTTP request to the AMC Integration API must be made alongside a valid token which can be generated through one of its own endpoints, otherwise access to the API and the mayority of its functionalities will be denied returning the following response.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">{
+  &quot;message&quot;: &quot;JWTError&quot;,
+  &quot;error&quot;: &quot;jwt must be provided&quot;,
+  &quot;statusCode&quot;: 409
+}</code></pre></div><h3>Token Generation</h3>
+<blockquote>
+<p>Note: Since its purpose is to automate Power Bi&#39;s data retrieval proccess, a token generated through this API will have no expiration time so a good practice would be to generate and store a single token for all requests to be done.</p>
+</blockquote>
+<p>To generate an access token, a POST call must be made to the <code>/auth</code> endpoint, either via [Postman] or through some other API tool, while containing a request´s body such as:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">{
+    &quot;access_key&quot; : &lt;IAM user´s access key&gt;,
+    &quot;secret_key&quot; : &lt;IAM user´s secret access key&gt;
+}</code></pre></div><p>In case of a successful call the API will return a newly created token as response, otherwise it will return a variation of the following message depending on the missing value.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">{
+  &quot;message&quot;: [
+    &quot;access_key should not be empty&quot;,
+    &quot;access_key must be a string&quot;,
+    &quot;secret_key should not be empty&quot;,
+    &quot;secret_key must be a string&quot;
+  ],
+  &quot;error&quot;: &quot;Bad Request&quot;,
+  &quot;statusCode&quot;: 400
+}</code></pre></div><h3>Token Usage</h3>
+<p>To access the rest of the API´s functionalities the token needs to be sent alongside any request to the other endpoints in the form of a bearer token which can be easily achieved through [Postman]&#39;s authorization tab.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">Authorization: Bearer &lt;generated_token&gt;</code></pre></div><p>The API´s middleware will require the token to be valid in 2 different ways, the first one being a valid JWT which won´t be a problem for a token generated through the <code>/auth</code> endpoint and the second one being created using valid AWS credentials which should match the ones declared as environment variables.</p>
+<p>In case of not meeting the requirements, the API will return the following messages respectively. </p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">{
+  &quot;message&quot;: &quot;JWTError&quot;,
+  &quot;error&quot;: &quot;invalid signature&quot;,
+  &quot;statusCode&quot;: 409
+}</code></pre></div><b>Example :</b><div><pre class="line-numbers"><code class="language-sh">
+{
+  &quot;message&quot;: &quot;jwt signed with unauthorized credentials&quot;,
+  &quot;error&quot;: &quot;Forbidden&quot;,
+  &quot;statusCode&quot;: 403
+}</code></pre></div><h2>Endpoints</h2>
+<h3>Auth</h3>
+<h4>/auth</h4>
+<ul>
+<li>Method: POST</li>
+<li>Token required: False</li>
+<li>Description: Generates an access token through valid AWS credentials which then will be used as the only authorization parameter needed for using the rest of the API´s functionalities.</li>
+</ul>
+<p>More  info about this on the Authorization section.</p>
+<h3>Reports</h3>
+<h4>/reports</h4>
+<ul>
+<li>Method: GET</li>
+<li>Token required: True</li>
+<li>Description: Obtains the metadata list of all content inside the S3 bucket linked to Amazon Marketing Cloud.</li>
+</ul>
+<h4>/reports/download?file={file_name}</h4>
+<ul>
+<li>Method: GET</li>
+<li>Query Params: file_name</li>
+<li>Token required: True</li>
+<li>Description: Obtains the csv file´s data that matches the name of the file given as query parameter.</li>
+</ul>
+<h4>/reports/latest/{schedule_name}?month={month}&amp;year={year}</h4>
+<ul>
+<li>Method: GET</li>
+<li>Path Params: schedule_name</li>
+<li>Query Params: month, year</li>
+<li>Token required: True</li>
+<li>Description: Obtains the most recent csv file´s data that matches the name of the file given as path parameter.
+If given, month and year params will serve as extra conditionals to filter a report closest to the year and month specified instead of using the current date.</li>
+</ul>
+<h2>Workflows</h2>
+<h3>/workflows</h3>
+<ul>
+<li>Method: GET</li>
+<li>Token required: True</li>
+<li>Description: Obtains the sqlQuery and workflow_id of all workflows registered for this AMC´s instance.</li>
+</ul>
+<h3>/workflows/{workflowId}</h3>
+<ul>
+<li>Method: GET</li>
+<li>Path Params: workflowId</li>
+<li>Token required: True</li>
+<li>Description: Obtains the sqlQuery and workflow_id of a workflow registered for this AMC´s instance that matches the given workflow_id.</li>
+</ul>
+<h3>/workflows/</h3>
+<ul>
+<li>Method: POST</li>
+<li>Token required: True</li>
+<li>Description: Registers a new workflow for this AMC´s instance by sending the body´s content to the Amazon Ads API.</li>
+</ul>
+<h3>/workflows/{workflowId}</h3>
+<ul>
+<li>Method: PUT</li>
+<li>Path Params: workflowId</li>
+<li>Token required: True</li>
+<li>Description: Updates an existing workflow for this AMC´s instance by sending the body´s content to the Amazon Ads API.</li>
+</ul>
+<p>For more information see <a href="https://advertising.amazon.com/API/docs/en-us/amc-reporting#tag/Workflows">https://advertising.amazon.com/API/docs/en-us/amc-reporting#tag/Workflows</a></p>
+<h2>Executions</h2>
+<h3>/executions/{execution_id}</h3>
+<ul>
+<li>Method: GET</li>
+<li>Path Params: execution_id</li>
+<li>Token required: True</li>
+<li>Description: Retrieves all details of a workflow execution for this AMC´s instance that matches the given execution_id.</li>
+</ul>
+<h3>/executions/</h3>
+<ul>
+<li>Method: POST</li>
+<li>Token required: True</li>
+<li>Description: Creates a new workflow execution for this AMC´s instance by sending the body´s content to the Amazon Ads API.</li>
+</ul>
+<p>For more information see <a href="https://advertising.amazon.com/API/docs/en-us/amc-reporting#tag/Workflow-executions">https://advertising.amazon.com/API/docs/en-us/amc-reporting#tag/Workflow-executions</a></p>
+<h2>Automated</h2>
+<h3>/automated/{workflow_id}?timeWindow={timeWindow}&amp;update={update}</h3>
+<ul>
+<li>Method: GET</li>
+<li>Path Params: workflow_id</li>
+<li>Query Params: timeWindow, update</li>
+<li>Token required: True</li>
+<li>Description: Obtains at the moment generated csv file´s data that matches the name of the file given as path parameter.
+If given, timeWindow will define the number of previous months until current date from where the data will be retrieved by AMC; update will update the workflow´s SQL query stored in the API before running its execution.</li>
+</ul>
+<h2>Documentation</h2>
+<p>For a more detailed view of the proyect as well as of all of its modules, controllers, services, and so on run the following command (having installed dependencies before hand).</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">npm run documentation:serve</code></pre></div><h2>Development Team</h2>
+<p>omar.robledo1.danone.com</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
